@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>어바웃피싱 8월 통합 서비스 — 9/9 론칭 전환 준비서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#0041FF; --blt:#EBF0FF; --blk:#1A1A1A; --body:#363636; --desc:#767676;
+  --green:#00A86B; --red:#D93025; --orange:#C96A00; --purple:#6D28D9;
+  --bg:#F5F5F7; --line:#E8E8E8; --card:#fff;
+  --r:14px; --sh:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.04);
+}
+*{box-sizing:border-box;-webkit-text-size-adjust:100%}
+html,body{margin:0;padding:0}
+body{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--body);font-size:14px;line-height:1.65;min-width:320px;word-break:keep-all}
+a{color:var(--blue)}
+code{background:#F0F2F5;border-radius:4px;padding:1px 5px;font-size:.92em;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#334}
+b,strong{color:var(--blk);font-weight:700}
+i{color:var(--desc);font-style:normal}
+u{text-decoration-color:var(--blue);text-underline-offset:2px}
+
+/* ── header ── */
+header{background:linear-gradient(135deg,#001C6E 0%,#0041FF 100%);color:#fff;padding:28px 20px 22px}
+.hw{max-width:1180px;margin:0 auto}
+.eyebrow{font-size:12px;letter-spacing:.08em;opacity:.75;font-weight:500}
+h1{font-size:clamp(20px,4.4vw,30px);font-weight:900;margin:6px 0 4px;line-height:1.3;color:#fff}
+.sub{font-size:13px;opacity:.85}
+header b{color:#fff}
+.dchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.dchip{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 14px;font-size:12.5px;display:flex;align-items:center;gap:7px}
+.dchip b{color:#fff;font-size:15px}
+.dchip.hot{background:#fff;color:var(--blue);border-color:#fff}
+.dchip.hot b{color:var(--blue)}
+
+/* ── layout ── */
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 80px}
+section{margin-bottom:34px;scroll-margin-top:70px}
+h2{font-size:19px;font-weight:900;color:var(--blk);margin:0 0 4px;display:flex;align-items:center;gap:9px}
+h2 .n{background:var(--blue);color:#fff;width:24px;height:24px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;font-size:12.5px;flex:0 0 auto}
+.lede{color:var(--desc);font-size:13px;margin:0 0 14px}
+
+/* ── nav ── */
+nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nv{max-width:1180px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;padding:0 10px;scrollbar-width:none}
+.nv::-webkit-scrollbar{display:none}
+.nv a{padding:12px 11px;font-size:12.5px;color:var(--desc);text-decoration:none;white-space:nowrap;font-weight:500;border-bottom:2px solid transparent}
+.nv a:hover{color:var(--blue)}
+
+/* ── cards ── */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
+.grid{display:grid;gap:12px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.kpi{padding:14px 16px}
+.kpi .lab{font-size:11.5px;color:var(--desc);font-weight:500}
+.kpi .val{font-size:26px;font-weight:900;color:var(--blk);line-height:1.25}
+.kpi .val small{font-size:13px;color:var(--desc);font-weight:500}
+.bar{height:6px;background:#EEF0F3;border-radius:99px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--green);border-radius:99px;transition:width .3s}
+
+/* ── alert ── */
+.alert{border-radius:var(--r);padding:16px 18px;margin-bottom:12px;border:1px solid;font-size:13.5px}
+.alert h3{margin:0 0 6px;font-size:15px;font-weight:900;display:flex;gap:7px;align-items:center}
+.alert.red{background:#FEF2F1;border-color:#F5C6C2;color:#7A1B14}
+.alert.red h3{color:var(--red)}
+.alert.amber{background:#FFF8ED;border-color:#F3DDB8;color:#6B4708}
+.alert.amber h3{color:var(--orange)}
+.alert.blue{background:var(--blt);border-color:#C7D6FF;color:#12307F}
+.alert.blue h3{color:var(--blue)}
+.alert p{margin:6px 0 0}
+.alert ul{margin:8px 0 0;padding-left:18px}
+.alert li{margin:3px 0}
+
+/* ── toolbar ── */
+.toolbar{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:12px}
+.seg{display:flex;gap:4px;flex-wrap:wrap}
+.tg{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:12px;cursor:pointer;font-family:inherit;color:var(--body);font-weight:500;transition:.15s}
+.tg:hover{border-color:var(--blue);color:var(--blue)}
+.tg.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.tg.on.p0{background:var(--red);border-color:var(--red)}
+input.search{border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:12.5px;font-family:inherit;min-width:170px;flex:1;outline:none}
+input.search:focus{border-color:var(--blue)}
+
+/* ── item ── */
+.cat{margin-bottom:18px}
+.cathead{display:flex;align-items:center;gap:9px;margin:0 0 9px;padding-left:2px}
+.catdot{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
+.cathead h3{margin:0;font-size:15px;font-weight:900;color:var(--blk)}
+.cathead .cd{font-size:12px;color:var(--desc)}
+.cathead .cn{margin-left:auto;font-size:11.5px;color:var(--desc);font-weight:500}
+
+.item{border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:8px;overflow:hidden;transition:.15s}
+.item.done{opacity:.62}
+.item.done .it{text-decoration:line-through;text-decoration-color:#B9BEC7}
+.ihead{display:flex;gap:10px;padding:12px 14px;cursor:pointer;align-items:flex-start}
+.ihead:hover{background:#FAFBFC}
+.chk{width:20px;height:20px;border-radius:6px;border:2px solid #CFD4DC;flex:0 0 auto;margin-top:1px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:#fff;transition:.15s}
+.chk:hover{border-color:var(--green)}
+.chk.on{background:var(--green);border-color:var(--green)}
+.chk.on:after{content:'';width:5px;height:9px;border:solid #fff;border-width:0 2.2px 2.2px 0;transform:rotate(43deg) translate(-1px,-1px)}
+.chk.doing{background:var(--orange);border-color:var(--orange)}
+.chk.doing:after{content:'';width:8px;height:2.5px;background:#fff;border-radius:2px}
+.chk.hold{background:#9AA1AC;border-color:#9AA1AC}
+.chk.hold:after{content:'';width:8px;height:2.5px;background:#fff;border-radius:2px}
+.imain{flex:1;min-width:0}
+.itop{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:3px}
+.pid{font-size:10.5px;font-weight:700;color:var(--desc);letter-spacing:.03em;font-family:ui-monospace,monospace}
+.pri{font-size:10px;font-weight:900;padding:2px 6px;border-radius:5px;letter-spacing:.02em}
+.pri.P0{background:#FDE7E5;color:var(--red)}
+.pri.P1{background:#FFF3E0;color:var(--orange)}
+.pri.P2{background:#EEF1F5;color:#5B6472}
+.due{font-size:11px;color:var(--desc);font-weight:500;margin-left:auto;white-space:nowrap}
+.due.soon{color:var(--red);font-weight:700}
+.due.near{color:var(--orange);font-weight:700}
+.it{font-size:14px;font-weight:700;color:var(--blk);line-height:1.5}
+.owner-mini{font-size:11px;color:var(--blue);font-weight:500}
+.caret{color:#C3C8D0;font-size:11px;margin-top:4px;transition:.2s;flex:0 0 auto}
+.item.open .caret{transform:rotate(90deg)}
+.ibody{display:none;padding:0 14px 14px 44px;border-top:1px solid #F1F3F6}
+.item.open .ibody{display:block}
+.why{background:#FAFBFC;border-left:3px solid var(--blue);border-radius:0 8px 8px 0;padding:10px 13px;margin:12px 0 10px;font-size:13px;line-height:1.7}
+.why .wl{font-size:10.5px;font-weight:900;color:var(--blue);letter-spacing:.05em;display:block;margin-bottom:3px}
+.out{font-size:12px;color:var(--desc);margin-bottom:10px}
+.out b{color:var(--body);font-weight:500}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.fld label{display:block;font-size:10.5px;color:var(--desc);font-weight:700;margin-bottom:3px;letter-spacing:.03em}
+.fld select,.fld input,.fld textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:12.5px;font-family:inherit;color:var(--body);outline:none;background:#fff}
+.fld select:focus,.fld input:focus,.fld textarea:focus{border-color:var(--blue)}
+.fld textarea{resize:vertical;min-height:38px}
+.fld.wide{grid-column:1/-1}
+.saved{font-size:10.5px;color:var(--green);font-weight:500;margin-top:6px;min-height:14px}
+
+/* ── table ── */
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff}
+.tbl th{background:#F7F8FA;text-align:left;padding:9px 11px;font-weight:700;color:var(--blk);border-bottom:1px solid var(--line);font-size:11.5px;white-space:nowrap}
+.tbl td{padding:10px 11px;border-bottom:1px solid #F1F3F6;vertical-align:top;line-height:1.6}
+.tbl tr:last-child td{border-bottom:none}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
+
+/* ── timeline ── */
+.tl{position:relative;padding-left:26px}
+.tl:before{content:'';position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,#DDE3ED,#0041FF)}
+.tli{position:relative;margin-bottom:11px}
+.tli:before{content:'';position:absolute;left:-24px;top:6px;width:10px;height:10px;border-radius:50%;background:#fff;border:2.5px solid #C9D2E3}
+.tli.major:before{border-color:var(--blue);background:var(--blue)}
+.tli.gate:before{border-color:var(--orange);background:var(--orange)}
+.tli.launch:before{border-color:var(--red);background:var(--red);width:14px;height:14px;left:-26px;top:4px}
+.tli.today:before{border-color:var(--green);background:var(--green)}
+.tlc{background:#fff;border:1px solid var(--line);border-radius:11px;padding:10px 13px;box-shadow:var(--sh)}
+.tli.launch .tlc{border-color:#F5C6C2;background:#FEF7F6}
+.tli.major .tlc{border-color:#C7D6FF}
+.tli.today .tlc{border-color:#BFE8D6;background:#F4FBF8}
+.tld{font-size:11px;color:var(--desc);font-weight:700;letter-spacing:.02em}
+.tld .dd{color:var(--blue);margin-left:6px}
+.tlt{font-size:13.5px;font-weight:700;color:var(--blk);margin:1px 0 2px}
+.tls{font-size:12px;color:var(--desc)}
+
+/* ── risk ── */
+.risk{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:#fff;margin-bottom:8px}
+.risk .rh{display:flex;gap:8px;align-items:center;margin-bottom:5px;flex-wrap:wrap}
+.lv{font-size:10px;font-weight:900;padding:2px 8px;border-radius:5px}
+.lv.상{background:#FDE7E5;color:var(--red)}
+.lv.중{background:#FFF3E0;color:var(--orange)}
+.lv.하{background:#EEF1F5;color:#5B6472}
+.risk .rt{font-size:13.5px;font-weight:700;color:var(--blk)}
+.risk .rd{font-size:12.5px;margin-bottom:6px}
+.risk .rm{font-size:12.5px;background:#F4FBF8;border-radius:8px;padding:8px 11px;color:#0B5C40}
+.risk .rm b{color:#064A33}
+
+/* ── fb status ── */
+.fbbar{position:fixed;right:12px;bottom:12px;z-index:80;display:flex;gap:6px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px;box-shadow:0 4px 20px rgba(0,0,0,.12);font-size:11.5px;color:var(--desc)}
+.dot{width:7px;height:7px;border-radius:50%;background:#C9CED6;flex:0 0 auto}
+.dot.ok{background:var(--green);box-shadow:0 0 0 3px rgba(0,168,107,.15)}
+.dot.err{background:var(--red)}
+.dot.local{background:var(--orange)}
+footer{border-top:1px solid var(--line);margin-top:30px;padding-top:16px;font-size:11.5px;color:var(--desc)}
+@media(max-width:520px){
+  .ibody{padding-left:14px}
+  .due{margin-left:0;width:100%}
+}
+@media print{
+  nav,.fbbar,.toolbar{display:none}
+  .item .ibody{display:block!important}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+<header><div class="hw">
+  <div class="eyebrow">ABOUTFISHING · LAUNCH TRANSITION BRIEF</div>
+  <h1>8월 통합 서비스 → 9월 9일 론칭 전환 준비서</h1>
+  <div class="sub">8/10 앱내공지 게시 · 9/9 정식 론칭 기준 · 준비항목 <b id="cnt">–</b>건 / 미결 의사결정 10건 / 리스크 10건</div>
+  <div class="dchips" id="dchips"></div>
+</div></header>
+
+<nav><div class="nv">
+  <a href="#s0">요약</a><a href="#s1">핵심 판단 3</a><a href="#s2">날짜 의존성</a>
+  <a href="#s3">준비항목</a><a href="#s4">역산 일정</a><a href="#s5">의사결정</a>
+  <a href="#s6">리스크</a><a href="#s7">근거</a>
+</div></nav>
+
+<div class="wrap">
+
+<section id="s0">
+  <h2><span class="n">0</span>한눈에 보기</h2>
+  <p class="lede">체크 상태·담당자·메모는 입력 즉시 Firebase RTDB에 저장되어 다른 사람의 화면에도 반영됩니다.</p>
+  <div class="grid g4" id="kpis"></div>
+</section>
+
+<section id="s1">
+  <h2><span class="n">1</span>먼저 결론 — 지금 놓치면 되돌릴 수 없는 3가지</h2>
+  <p class="lede">나머지 항목은 순서를 바꿔도 되지만, 이 셋은 특정 날짜를 지나면 선택지가 사라집니다.</p>
+
+  <div class="alert red">
+    <h3>① 8/10은 공지 게시일이 아니라 <u>약관 재공고의 법정 마감일</u>입니다</h3>
+    <p>약관·개인정보 처리방침 11차는 현재 <b>공고 2026-07-19 / 시행 2026-08-19</b>로 3문서가 확정돼 있습니다. 론칭이 9/9로 밀렸는데 시행일을 그대로 두면, <b>8/19~9/8 3주 동안 신약관은 시행됐지만 그 약관이 전제하는 화면(D-3 취소요청 접수·머니 환불 신청)이 앱에 없는 상태</b>가 됩니다.</p>
+    <p>시행일을 9/9로 옮기려면 이용자 불리 변경의 <b>30일 사전 고지</b>를 다시 채워야 하고, 9/9에서 30일을 역산하면 정확히 <b>2026-08-10</b>입니다. 즉 <b>안전 마진이 하루도 없습니다.</b></p>
+    <ul>
+      <li>권고: 공고를 <b>8/7(금)~8/8(토)</b>로 앞당기거나, 시행일을 <b>9/10 이후</b>로 하루 미뤄 여유를 만들 것 (초일 산입 여부는 법무 확인 필수)</li>
+      <li>동시에 <b>CPO 성명 공란</b>은 여전히 “시행 자체가 불가”한 정지조건 — 8/7까지 확정 필요</li>
+    </ul>
+  </div>
+
+  <div class="alert amber">
+    <h3>② 딥링크는 “원링크를 고치는 문제”가 아니라 <u>앱 빌드에 물린 문제</u>입니다</h3>
+    <p>고객앱은 <b>전체 웹뷰 + 앱패킹(네이티브 화면 없음)</b> 구조라 <b>웹 URL이 곧 딥링크</b>입니다. 따라서 통합에서 라우트가 바뀌면 기존 원링크가 통째로 무효가 됩니다. 게다가:</p>
+    <ul>
+      <li>AppsFlyer OneLink는 <b>앱이 이미 아는 키·값이면 대시보드 수정만으로 충분</b>하지만, <b>새 키를 도입하면 앱 코드 수정 = 재배포</b>가 필요합니다 → 9/9 빌드에 반드시 포함돼야 하고, 그러면 마감이 <b>Feature Freeze 8/19</b>로 당겨집니다.</li>
+      <li>iOS AASA는 <b>이미 설치된 기기가 주 1회만 갱신본을 확인</b> → 반영에 최대 7일. <b>9/1까지</b> 올라가 있어야 합니다.</li>
+      <li>Android 14 이하는 App Links 주기 재검증이 <b>없어서</b>, 경로가 바뀌면 <b>앱 업데이트를 받기 전까지 딥링크가 깨진 채로 남습니다.</b></li>
+      <li>부수 확인: Firebase Dynamic Links는 <b>2025-08-25 완전 종료</b>되어 남아 있으면 404입니다. 원링크의 <b>pid·c 파라미터 미부착</b>은 7/28부터 사흘 연속 P0로 올라온 미해결 건으로, 이대로면 <b>론칭 유입 전량이 오가닉으로 집계</b>됩니다.</li>
+    </ul>
+  </div>
+
+  <div class="alert blue">
+    <h3>③ SEO는 9/9에 켜면 <u>이미 늦습니다</u> — 지금 켤 수 있는 것부터 분리하세요</h3>
+    <p>구글 공식 기준으로 중소 규모 사이트도 색인 이전에 <b>수 주</b>가 걸립니다. 9~10월이 피크인데 9/9에 한꺼번에 켜면 <b>피크의 검색 유입을 통째로 포기</b>하는 셈입니다. 지금 <b>URL 구조를 바꾸지 않고도</b> 선반영 가능한 항목이 있습니다.</p>
+    <ul>
+      <li>robots.txt의 <code>Disallow: /_next/static/chunks/</code> 제거 — 렌더 JS를 스스로 차단 중</li>
+      <li><code>sitemap.xml</code> 정상화 — aboutfishing.kr은 404, booking은 파싱 실패 상태</li>
+      <li>기존 <code>/boats/*</code>에 title·description·JSON-LD 주입 — 현재 head 태그 5개뿐, 전 도메인 JSON-LD 0건(경쟁사 포함 전원 0건 = 선점 여지)</li>
+      <li>단, <b>날짜를 고르기 전엔 상품 링크가 0개로 렌더되는 문제</b>는 구조 변경이라 Feature Freeze(8/19) 안에 넣어야 합니다 — 설계서가 지목한 단일 최대 병목</li>
+    </ul>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="n">2</span>8월 기준으로 박혀 있는 날짜 — 전수 점검표</h2>
+  <p class="lede">연기하면 자동으로 어긋나는 것들입니다. “고칠 곳”이 아니라 “안 고치면 사고 나는 곳” 목록으로 읽어주세요.</p>
+  <div class="scroll"><table class="tbl">
+    <thead><tr><th>대상</th><th>현재 박혀 있는 날짜</th><th>9/9 연기 시 무슨 일이 생기나</th><th>연결 항목</th></tr></thead>
+    <tbody id="dep"></tbody>
+  </table></div>
+</section>
+
+<section id="s3">
+  <h2><span class="n">3</span>준비 필요 항목 — 사유 포함</h2>
+  <p class="lede">항목을 누르면 <b>왜 필요한지</b>와 산출물이 펼쳐집니다. 상태·담당자·메모는 자동 저장됩니다.</p>
+  <div class="toolbar">
+    <div class="seg" id="fcat"></div>
+    <div class="seg" id="fpri"></div>
+    <div class="seg" id="fsta"></div>
+    <input class="search" id="q" placeholder="검색 (제목·사유·ID)">
+    <button class="tg" id="expand">전체 펼치기</button>
+  </div>
+  <div id="list"></div>
+</section>
+
+<section id="s4">
+  <h2><span class="n">4</span>9/9 역산 일정 — 언제 빌드하고 언제 심사에 올리나</h2>
+  <p class="lede">전제: <b>기존 앱의 업데이트</b>(신규 앱 등록이 아님). 이 전제가 깨지면 <span style="color:var(--red);font-weight:700">일정표 전체를 다시 짜야 합니다</span> — 항목 E-01·E-02를 먼저 확정하세요.</p>
+
+  <div class="grid g2" style="margin-bottom:14px">
+    <div class="card" style="padding:14px 16px">
+      <div style="font-size:11px;font-weight:900;color:var(--blue);letter-spacing:.05em;margin-bottom:6px">APP STORE (iOS)</div>
+      <table class="tbl" style="font-size:12px"><tbody>
+        <tr><td style="white-space:nowrap"><b>9/1(화)</b></td><td>심사 제출 + <b>“Automatically release after App Review, no earlier than 2026-09-09”</b> 설정</td></tr>
+        <tr><td><b>근거</b></td><td>Apple 공식 “90%가 24시간 내 심사”. 다만 <b>9월은 iOS 신버전 시즌 적체</b> 지적이 반복 → <b>리젝 1사이클(2~3일) 버퍼 내장</b></td></tr>
+        <tr><td><b>주의</b></td><td>릴리즈 예약은 <b>플랫폼별</b> 적용. 웹뷰 앱은 심사지침 <b>4.2 Minimum Functionality</b> 리스크가 있어 앱다운 기능을 심사 노트에 명시</td></tr>
+      </tbody></table>
+    </div>
+    <div class="card" style="padding:14px 16px">
+      <div style="font-size:11px;font-weight:900;color:var(--green);letter-spacing:.05em;margin-bottom:6px">GOOGLE PLAY (Android)</div>
+      <table class="tbl" style="font-size:12px"><tbody>
+        <tr><td style="white-space:nowrap"><b>8/31(월)</b></td><td>프로덕션 심사 제출 + <b>관리형 게시(Managed Publishing) ON</b> → 9/9 수동 “Publish changes”</td></tr>
+        <tr><td><b>근거</b></td><td>공식 “심사 <b>최대 7일 이상</b>”, 구글이 <b>제출~게시 사이 최소 1주 버퍼</b>를 권고</td></tr>
+        <tr><td><b>주의</b></td><td><b>가격·출시 노트·기기 제외 규칙·인앱 상품은 관리형 게시를 우회</b>해 즉시 반영. 단계적 출시는 <b>업데이트에만</b> 가능하고 비율이 자동 증가하지 않음</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+
+  <div class="tl" id="tl"></div>
+
+  <div class="alert blue" style="margin-top:14px">
+    <h3>일정상 안전판 — 웹뷰 구조가 유리하게 작동합니다</h3>
+    <p>실질 릴리즈는 <b>웹 배포</b>이고 앱 바이너리는 최소버전 플래그·딥링크 핸들러·권한·브릿지 정도만 담습니다. 따라서 D-1에 한쪽 스토어가 미승인이어도 <b>웹만 먼저 열고 앱은 승인 즉시 게시</b>하는 컨틴전시가 가능합니다. 같은 이유로 <b>롤백도 웹 롤백이 1순위</b>여야 합니다 — 단계적 출시는 중단해도 이미 설치한 사용자는 그 버전에 남기 때문입니다.</p>
+  </div>
+</section>
+
+<section id="s5">
+  <h2><span class="n">5</span>미결 의사결정 — 누가, 언제까지</h2>
+  <p class="lede">아래가 정해지지 않으면 그 아래 실무가 전부 멈춥니다.</p>
+  <div class="scroll"><table class="tbl">
+    <thead><tr><th>ID</th><th>결정 사항</th><th>선택지</th><th>정하지 않으면</th><th>기한 / 주체</th></tr></thead>
+    <tbody id="dec"></tbody>
+  </table></div>
+</section>
+
+<section id="s6">
+  <h2><span class="n">6</span>리스크 레지스터</h2>
+  <p class="lede">연기 자체가 만들어낸 리스크와, 연기로 더 커진 기존 리스크를 함께 담았습니다.</p>
+  <div id="risk"></div>
+</section>
+
+<section id="s7">
+  <h2><span class="n">7</span>근거 자료</h2>
+  <p class="lede">이 문서의 모든 수치·인용은 아래 자료에서 실제로 확인된 것만 사용했습니다. 추정한 부분은 본문에 그렇게 표기했습니다.</p>
+  <div class="scroll"><table class="tbl">
+    <thead><tr><th>자료</th><th>이 문서에서 인용한 내용</th></tr></thead>
+    <tbody id="src"></tbody>
+  </table></div>
+  <footer>
+    <b>확인이 필요한 전제 3가지</b> — ① 9/9 론칭이 <b>기존 앱 업데이트</b>라는 전제(공지 문구·v6.6.0 심사 이력에서 추정, 공식 확인 전) ② 약관 30일 사전고지의 <b>초일 산입</b> 여부(법무 확인 필요) ③ 원스토어 검수 소요(공식 미공개, 사전 문의 필요).<br>
+    <span id="ftr"></span>
+  </footer>
+</section>
+
+</div>
+
+<div class="fbbar"><span class="dot" id="fbdot"></span><span id="fbtxt">연결 중…</span></div>
+
+<script>
+/* eslint-disable */
+const META = {
+  today: '2026-08-03',
+  notice: '2026-08-10',
+  launch: '2026-09-09',
+  title: '어바웃피싱 8월 통합 서비스 — 9/9 론칭 전환 준비서',
+  ver: 'v1.0 · 2026-08-03 작성'
+};
+
+const CATS = [
+  { id:'A', name:'공지·커뮤니케이션', color:'#0041FF', desc:'8/10 앱내공지 게시를 위한 개정 작업' },
+  { id:'B', name:'법무·약관',        color:'#D93025', desc:'약관·처리방침 11차 시행일 재결정' },
+  { id:'C', name:'딥링크·원링크',    color:'#6D28D9', desc:'OneLink / Universal Links / App Links' },
+  { id:'D', name:'SEO·웹',           color:'#00A86B', desc:'기존 색인 보존 + 신규 페이지 선반영' },
+  { id:'E', name:'빌드·심사·릴리즈', color:'#C96A00', desc:'prod 빌드 · 스토어 심사 · 게시' },
+  { id:'F', name:'제품·QA',          color:'#0E7490', desc:'dev 갭 · 정책 충돌 · 실기기 검수' },
+  { id:'G', name:'마케팅·지표',      color:'#BE185D', desc:'GA · 쿠폰 실험 · 공급 · 손절 게이트' },
+  { id:'H', name:'CS·운영',          color:'#4B5563', desc:'응대 · 온콜 · 산출물 동기화' }
+];
+
+/* status: todo | doing | done | hold ; owner/memo는 RTDB 저장 */
+const ITEMS = [
+/* ───────── A. 공지·커뮤니케이션 ───────── */
+{id:'A-01',c:'A',p:'P0',due:'2026-08-06',t:'공지 본문 날짜 문구 전면 교체 (8/17·8/19·8/18·8/16 → 신 일정)',
+ why:'현행 <code>8월통합_공지_배너_상세_프로토타입.html</code> v3에 <b>8월 17일 4곳 · 8월 19일 12곳 · 8월 18일 4곳 · 8월 16일 2곳</b>이 하드코딩되어 있음. 그대로 8/10에 올리면 전부 오고지가 된다.',
+ out:'개정본 v4 HTML + 변경 라인 대조표'},
+{id:'A-02',c:'A',p:'P0',due:'2026-08-05',t:'연기 사유·정정 문단 신설 및 톤 재조정',
+ why:'7/20 공지로 이미 “오는 8월 17일 … 통합 앱을 선보입니다”라고 확약했다. 날짜만 조용히 바꾸면 신뢰가 깎인다. 11직군 검토에서도 <i>“‘잠시 중단·잠시 쉬어갑니다’를 반복 → 수개월 지연 시 ‘잠시라더니’가 뒷말 소재”</i>로 이미 경고된 지점.',
+ out:'정정·사과 리드 문단 확정안'},
+{id:'A-03',c:'A',p:'P0',due:'2026-08-06',t:'팝업 dismiss 저장키 교체 (notice_202608_* → notice_202609_*)',
+ why:'현행 저장키 <code>notice_202608_dismissed_at</code>로 “7일간 다시 보지 않기”를 누른 회원은 <b>새 공지를 아예 못 본다</b>. 키를 바꿔야 전 회원 재노출된다.',
+ out:'키 변경 + 회귀 테스트'},
+{id:'A-04',c:'A',p:'P0',due:'2026-08-06',t:'팝업 마일스톤 재노출일 교체 (8/17·8/19 D-1 → 9/9·9/8)',
+ why:'프로토타입 L586·L631에 마일스톤 재노출 로직이 8/17·8/19 기준으로 박혀 있다. 미교체 시 8월에 헛 노출되고 9월엔 안 뜬다.',
+ out:'JS 상수 교체'},
+{id:'A-05',c:'A',p:'P0',due:'2026-08-07',t:'배너 운영 페이즈 재설계 (①사전고지 ②오픈안내 ③시행중)',
+ why:'현행 계획 <i>“①7/20~8/16 사전고지 ②8/17~18 오픈안내 ③8/19~ 머니중단·환불안내로 교체”</i>(L594)가 전부 8월 기준. 배너 교체 시점표를 9/9 기준으로 다시 짜야 운영이 굴러간다.',
+ out:'배너 3종 × 교체일 캘린더'},
+{id:'A-06',c:'A',p:'P0',due:'2026-08-07',t:'강제 업데이트 여부·구버전 지원 종료일 공지에 명시',
+ why:'11직군 검토 L197 지적: <i>“미업데이트 회원의 기존 앱이 언제까지 동작하는지가 없다. 예상 빈도가 높은 질문인데 공지가 답을 갖고 있지 않다.”</i> 구버전 마스터의 <b>L01 강제업데이트 분기·MSG06 버전업데이트 얼럿</b>이 신규 6섹션에 미이관 상태라 기술적으로도 미정.',
+ out:'정책 확정 + 공지 FAQ 반영'},
+{id:'A-07',c:'A',p:'P1',due:'2026-08-07',t:'후속 공지 트리거 목록 확정 (담당·채널 지정)',
+ why:'본문이 약속한 후속 공지가 4건 이상인데 트리거 목록이 없다는 지적이 이미 있었다. 머니 재개일 / 쇼핑 재오픈 / 커뮤니티 복원 / D-3 상품별 기준 / <b>일정 재변경 시</b> — 각각 담당·채널(앱공지·푸시·문자)을 못 박아야 2차 연기 때 같은 사고가 안 난다.',
+ out:'트리거 표 (조건·담당·채널·문안 스텁)'},
+{id:'A-08',c:'A',p:'P0',due:'2026-08-08',t:'알림톡·LMS 카피 재작성 및 발송 일정 재설계',
+ why:'현행 초안이 <i>“8/19부터 충전·사용 일시중단 … 7월 중 1회 + 8/19 시행 안내 1회”</i> 기준. 발송 회차와 날짜를 신 일정으로 다시 잡아야 한다. 어드민 알림톡은 <b>정보성 전용</b>(광고 문구 반려 이력)이라 문안 검수 필요.',
+ out:'알림톡 2회차 문안 + 발송 캘린더'},
+{id:'A-09',c:'A',p:'P1',due:'2026-08-08',t:'면책·법적 고지 문구 가독성 개선 (대비율 1.9:1 → AA)',
+ why:'“세부 일정 변경 가능·약관 공고/시행일”이라는 <b>법적 성격의 고지</b>가 #BCBCBC 12px, 대비율 1.9:1로 WCAG AA 미달. 연기 고지가 실제로 읽히지 않으면 고지 충분성 자체가 다퉈진다.',
+ out:'색·크기 수정'},
+{id:'A-10',c:'A',p:'P0',due:'2026-08-09',t:'발송 게이트 6건 전건 재판정',
+ why:'게이트는 “8/17 배포 범위에 실제 포함되는가”를 묻는 조건이었다. 배포 범위·시점이 9/9로 바뀌었으니 <b>전건 다시 판정</b>해야 한다. 특히 ①앱 머니 화면 [환불 신청] 경로 실재 여부 ②D-3 취소요청 접수 버튼 개발 스코프.',
+ out:'게이트 6건 판정표'},
+{id:'A-11',c:'A',p:'P1',due:'2026-08-10',t:'사내 공유 + CS 스크립트 동시 배포',
+ why:'공지 게시 순간부터 문의가 들어온다. 게시와 스크립트 배포가 같은 날이어야 첫 응대가 어긋나지 않는다.',
+ out:'사내 공지 + CS 스크립트'},
+{id:'A-12',c:'A',p:'P2',due:'2026-08-10',t:'공지 노출 지표 태깅 (배너 클릭·팝업 닫기·상세 도달)',
+ why:'연기 공지의 도달률을 모르면 2차 커뮤니케이션 강도를 정할 근거가 없다.',
+ out:'GA4 이벤트 3종'},
+
+/* ───────── B. 법무·약관 ───────── */
+{id:'B-01',c:'B',p:'P0',due:'2026-08-07',t:'★ 약관·처리방침 11차 시행일 재결정 (8/19 유지 vs 9/9~9/10 이동)',
+ why:'현재 <b>공고 2026-07-19 / 시행 2026-08-19</b>로 3문서(약관·처리방침·변경대비표) 전부 확정 상태. 8/19를 유지하면 앱은 9/9 오픈인데 <b>약관만 3주 먼저 시행</b>된다. 신약관이 전제하는 화면(D-3 취소요청 접수, 머니 환불 신청)이 구버전 앱에 없어 3주간 “규정은 있는데 이행 수단이 없는” 상태가 된다. 이 문서 전체에서 가장 먼저 결정해야 할 항목.',
+ out:'법무 판단서 + 시행일 확정'},
+{id:'B-02',c:'B',p:'P0',due:'2026-08-08',t:'시행일 이동 시 재공고 — 마감이 곧 8/10',
+ why:'이용자에게 불리한 약관 변경은 <b>30일 사전 고지</b>가 원칙. 9/9 시행에서 30일을 역산하면 <b>2026-08-10</b>, 즉 앱내공지 게시일과 정확히 같은 날이다. 마진이 0이므로 <b>①공고를 8/7~8/8로 당기거나 ②시행일을 9/10 이후로 하루 미루는</b> 안전판이 필요하다. (초일 산입 여부는 법무 확인 필수)',
+ out:'재공고문 + 발송(앱·웹·메일)'},
+{id:'B-03',c:'B',p:'P0',due:'2026-08-07',t:'개인정보 보호책임자(CPO) 성명·직책·부서 확정',
+ why:'재검수 판정문이 명시한 <b>유일한 시행 정지조건</b>. 공란 상태로는 시행 자체가 불가. 연기와 무관하게 남아 있는 최우선 블로커다.',
+ out:'성명·직책·부서 3문서 반영'},
+{id:'B-04',c:'B',p:'P0',due:'2026-08-08',t:'회사확정 잔여 5건 처리',
+ why:'①국외이전 실제 저장위치·재위탁(Google·Elasticsearch) ②선박 CCTV 영상 제공 여부 ③앱 실제 요청 OS 접근권한 전체 목록 ④웰컴페이먼츠 = 위탁 vs 제3자제공 ⑤D-3 기준일 및 동의창 필수/선택 UI. ③은 미고지 적발 시 스토어·방통위 시정 대상.',
+ out:'항목별 확정 회신'},
+{id:'B-05',c:'B',p:'P1',due:'2026-08-12',t:'3문서 시행일·공고일 일괄 수정 및 재검증',
+ why:'재검수에서 <i>“3문서 모두 2026-08-19 / 2026-07-19 / 11차 일치”</i>로 확인된 상태. 한 문서만 고치면 정합성이 깨진다. 강조본·주석본까지 3종 세트로 관리 중이라 일괄 수정 후 재검증 필요.',
+ out:'개정 3문서 + 변경대비표 재발행'},
+{id:'B-06',c:'B',p:'P1',due:'2026-08-20',t:'머니 중단일 변경의 법적 성격 판단',
+ why:'머니 충전·사용 중단을 8/19→9/9로 늦추는 것은 <b>이용자에게 유리한 방향</b>이라 30일 재고지 요건이 완화될 수 있다. 반대로 부칙 문언이 “8월” 기준으로 쓰여 있어 문언 수정은 필요하다. 어느 쪽인지 확정해야 공지 문구가 정해진다.',
+ out:'법무 의견 + 부칙 문언 수정'},
+{id:'B-07',c:'B',p:'P2',due:'2026-09-02',t:'앱 OS 권한 고지 목록 ↔ 실제 빌드 권한 일치 검증',
+ why:'처리방침 접근권한 표와 실제 9/9 빌드의 매니페스트/Info.plist가 어긋나면 스토어 리젝·행정 리스크. 빌드 확정 후 대조가 유일한 검증 시점.',
+ out:'권한 대조표'},
+
+/* ───────── C. 딥링크·원링크 ───────── */
+{id:'C-01',c:'C',p:'P0',due:'2026-08-05',t:'원링크에 pid·c(UTM) 파라미터 부착 — 미해결 이월 P0',
+ why:'7/28·7/29·7/30 일간리포트에 사흘 연속 P0로 올라왔고 <i>“원링크에 pid·c가 없어서 앱스플라이어에서 전 클릭이 오가닉으로 잡힌다”</i>가 그대로 남아 있다. 이 상태로 9/9를 맞으면 <b>론칭 유입 전량이 오가닉</b>으로 집계돼 채널·캠페인별 기여도를 못 쓴다. Unassigned 세션이 이미 사흘 연속 약 50%.',
+ out:'파라미터 네이밍 규약 + 전 링크 일괄 적용'},
+{id:'C-02',c:'C',p:'P0',due:'2026-08-07',t:'현행 원링크 인벤토리 전수 + 목적지 URL 매핑표',
+ why:'무엇이 어디로 가는지 목록이 없으면 “원링크가 잘 가는가”를 검증할 수 없다. 대상: 퍼포먼스 광고 소재, 알림톡·LMS, 카카오채널, 앱내 배너/팝업, 오프라인 QR·영업 책자, 대행사(모리엔티드) 운용 링크, 쿠폰 캠페인에 나간 <b>boat{선박ID} 개인화 딥링크 6,563건</b>.',
+ out:'링크 인벤토리 시트 (채널·링크·목적지·소유자)'},
+{id:'C-03',c:'C',p:'P0',due:'2026-08-08',t:'9/9 이후 URL 라우트 변경 여부 확정',
+ why:'고객앱은 <b>전체 웹뷰 + 앱패킹</b> 구조라 <u>웹 URL이 곧 딥링크</u>다. dev 실측 라우트(<code>/booking/search/result?…</code>, <code>/map?point=…</code>, <code>/mypage/…</code>)가 통합 후 바뀌면 <b>기존 원링크 전량이 무효</b>가 된다. 바뀌는지/유지되는지부터 못 박아야 C-04 이하가 전부 결정된다.',
+ out:'라우트 변경 매트릭스 (유지/변경/신설)'},
+{id:'C-04',c:'C',p:'P0',due:'2026-08-12',t:'deep_link_value 스키마 확정 + 앱 라우팅 핸들러 구현 범위',
+ why:'AppsFlyer OneLink는 <b>앱에 이미 구현된 키·값 체계라면 대시보드에서 목적지만 바꿔도 앱 재배포가 불필요</b>하다. 반대로 앱이 모르는 새 키를 도입하면 앱 코드 수정 = 재배포가 필요하고, 그러면 9/9 빌드에 반드시 포함돼야 한다. “값이 아니라 스키마를 앱에 심는” 설계로 가야 이후 연기·변경에 앱 배포가 안 물린다.',
+ out:'스키마 정의서 + 앱 핸들러 스펙'},
+{id:'C-05',c:'C',p:'P0',due:'2026-08-12',t:'푸시 딥링크 규격(알림 → 예약/공지/조황 랜딩맵) 정의',
+ why:'고객앱 파악 문서가 <i>“현재 유일 미정의 문서”</i>로 지목한 항목이고, 어드민 기획브리프도 <i>“＋딥링크 필드 … 기획 확정 필요: 푸시 딥링크 규격 미정의”</i>로 대기 중이다. 미정의 시 어드민은 <b>딥링크 미지정 → 앱 홈 랜딩</b>으로 폴백해 푸시 성과가 전부 죽는다.',
+ out:'알림 유형 × 랜딩 URL 맵'},
+{id:'C-06',c:'C',p:'P0',due:'2026-08-06',t:'dev 실서비스 딥링크 미지원 실태 재확인',
+ why:'2026-08-02 실측 감사에서 <b>“딥링크 전부 미지원(푸시 설계 선행조건)”</b>이 P1로 잡혔다. 그런데 7/28 쿠폰 캠페인에서 개인화 딥링크를 6,563명에게 이미 발송했다. <b>그 링크들이 실제로 어디에 떨어지고 있는지</b>가 확인되지 않은 상태 — 이게 사실이면 쿠폰 실험 해석에도 영향이 간다.',
+ out:'실기기 착지 로그 (iOS/Android × 설치/미설치)'},
+{id:'C-07',c:'C',p:'P1',due:'2026-08-10',t:'Firebase Dynamic Links 잔재 점검',
+ why:'FDL은 <b>2025-08-25 완전 종료</b>되어 현재 클릭 시 HTTP 404를 반환한다. 과거 소재·메일·인쇄물에 FDL 링크가 남아 있으면 그대로 죽은 링크다.',
+ out:'잔존 링크 목록 + 치환'},
+{id:'C-08',c:'C',p:'P0',due:'2026-09-01',t:'AASA(apple-app-site-association) 선반영 — 론칭 7일 전 마감',
+ why:'Apple CDN은 게시 후 24시간 내 수집하지만, <b>이미 앱이 설치된 기기는 주 1회만 갱신본을 확인</b>한다. 즉 경로를 바꾸면 기존 사용자에게 반영되는 데 최대 7일. 9/9에 맞추려면 <b>9/1까지</b> 올라가 있어야 한다. (테스트용 <code>?mode=developer</code>는 스토어 제출 전 반드시 제거)',
+ out:'AASA 배포 + 반영 확인'},
+{id:'C-09',c:'C',p:'P0',due:'2026-09-01',t:'assetlinks.json 선반영 + Android 14 이하 리스크 고지',
+ why:'Android 15(API 35)+는 주기적 재검증이 있지만 <b>최대 7일</b> 걸리고, <b>Android 14 이하는 주기 재검증 자체가 없어 앱 설치·업데이트 시점에만 반영</b>된다. 도메인/경로를 바꾸면 구버전 안드로이드 기존 사용자는 <b>앱 업데이트를 받기 전까지 딥링크가 깨진 채로 남는다</b> — 별도 리스크로 관리 필요.',
+ out:'assetlinks 배포 + OS별 영향 추정'},
+{id:'C-10',c:'C',p:'P1',due:'2026-09-05',t:'링크 회귀 테스트 매트릭스 실행',
+ why:'조합: (앱 설치 / 미설치) × (iOS / Android) × (인앱 브라우저: 카카오·네이버·인스타) × 채널별 링크. 미설치 경로는 deferred deep linking이라 첫 실행 라우팅까지 확인해야 한다.',
+ out:'테스트 결과표'},
+{id:'C-11',c:'C',p:'P1',due:'2026-08-14',t:'B케이스 1,473명 딥링크 착지 대책',
+ why:'쿠폰 발송 6,563명 중 <b>1,473명(22%)</b>이 “8월만 열리고 9~10월이 닫힌 배”를 관심 선박으로 가진 인원. 딥링크 착지 후 <b>빈 캘린더</b>를 보면 그대로 이탈한다. 9/9 론칭이면 8월 재고가 이미 지나가 상황이 더 나빠진다.',
+ out:'대체 랜딩(지역·시즌 목록) 폴백 규칙'},
+
+/* ───────── D. SEO·웹 ───────── */
+{id:'D-01',c:'D',p:'P0',due:'2026-08-07',t:'기존 색인 URL 보존 여부 확정 + 301 매핑표 작성',
+ why:'현재 <code>booking.aboutfishing.kr/boats/95</code>·<code>/boats/91</code>이 구글에 색인돼 있다(SERP 타이틀이 SPA 폴백 <code>Aboutfishing</code>인 상태). 통합에서 URL 구조를 바꾸면 <b>매핑표 없이는 색인·랭킹이 그대로 소실</b>된다. 도메인이 유지되면 구글 “주소변경 도구”는 대상이 아니고 301+사이트맵+모니터링으로 처리한다.',
+ out:'구 URL → 신 URL 매핑표'},
+{id:'D-02',c:'D',p:'P0',due:'2026-08-12',t:'“지금 미리 켤 수 있는” SEO 항목 선반영 착수',
+ why:'구글 공식 기준으로 <b>중소 규모 사이트도 대부분의 페이지 이전에 수 주(a few weeks)</b>가 걸린다. 9/9에 한꺼번에 켜면 <b>9~10월 피크를 통째로 놓친다</b>. 지금 구조를 안 바꾸고도 가능한 것: ①robots.txt의 <code>Disallow: /_next/static/chunks/</code> 제거(렌더 JS를 스스로 차단 중) ②<code>sitemap.xml</code> 정상화(현재 aboutfishing.kr은 404, booking은 파싱 실패) ③기존 <code>/boats/*</code>에 title·description·JSON-LD 주입(현재 head 태그 5개뿐, 전 도메인 JSON-LD 0건).',
+ out:'선반영 배포 1회분'},
+{id:'D-03',c:'D',p:'P0',due:'2026-08-19',t:'상품 리스트 크롤 가능화 (날짜 미선택 시에도 상품 링크 렌더)',
+ why:'설계서가 <b>단일 최대 병목</b>으로 지목한 항목. 현재 상품 리스트가 캘린더에서 날짜를 고른 뒤에만 렌더돼 <b>크롤러가 보는 상품 링크가 0개</b>다. 이걸 안 풀면 나머지 SEO 작업이 전부 무의미하다.',
+ out:'서버 렌더 상품 링크'},
+{id:'D-04',c:'D',p:'P1',due:'2026-08-26',t:'선박상세 SSR/프리렌더 최소 세트 + 구조화 데이터',
+ why:'현재 <code>/boats/{id}</code> head는 charset·naver-verification·viewport·title·GTM <b>5개뿐</b>이고 body가 0바이트인 완전 CSR. 확정 스키마는 <b>선박상세=LocalBusiness(+hasOfferCatalog), 상품=Product+AggregateOffer(+BoatTrip 병기)</b>. 경쟁사 포함 전원 JSON-LD 0건이라 선점 여지가 크다.',
+ out:'SSR 적용 + JSON-LD 검증 통과'},
+{id:'D-05',c:'D',p:'P1',due:'2026-09-02',t:'신규 URL 체계 스테이징 리허설 + 리다이렉트 검증',
+ why:'URL 정본 규칙은 <b>ASCII 로마자 slug, 날짜는 경로가 아닌 <code>?date=</code> 파라미터+noindex</b>(날짜를 경로로 쓰면 21.9만 페이지 폭발). 리허설 없이 당일 전환하면 되돌릴 수 없다.',
+ out:'스테이징 검증 리포트'},
+{id:'D-06',c:'D',p:'P0',due:'2026-09-09',t:'론칭 당일 사이트맵 재제출 (Search Console · 네이버 서치어드바이저)',
+ why:'구글은 이전 시작 후 새 사이트맵 제출을 권고한다. 네이버에는 구글의 “주소변경 도구”에 해당하는 기능이 확인되지 않아 <b>사이트 등록·소유확인·사이트맵 재제출</b>로 처리해야 한다(IndexNow 지원은 별도 활용 가능).',
+ out:'양 도구 제출 완료 스크린샷'},
+{id:'D-07',c:'D',p:'P1',due:'2026-09-09',t:'301 리다이렉트 최소 1년 유지 정책 인프라 등록',
+ why:'구글 공식 권고가 <i>“가능한 한 오래, 일반적으로 최소 1년”</i>. 인프라 팀 운영 문서에 만료 없이 등록해두지 않으면 리팩터링 때 조용히 사라진다.',
+ out:'인프라 운영 문서 반영'},
+{id:'D-08',c:'D',p:'P1',due:'2026-08-21',t:'Netlify 크레딧 복구(8/21) 전 배포 계획 수립',
+ why:'2026-07-28에 프로덕션 배포 <b>69회 × 약 15크레딧</b>으로 월 1,000 한도를 소진해 전 프로젝트가 정지됐고 자동 복구는 <b>8/21</b>이다. 결제주기 7/21~8/20. 8/10 공지 준비 구간이 정지 기간과 겹치므로, 공개 URL로 공유하는 산출물의 배포 시점을 미리 묶어서 계획해야 한다. 월 한도는 배포 약 66회.',
+ out:'배포 배치 계획 (묶어서 1회)'},
+{id:'D-09',c:'D',p:'P2',due:'2026-09-09',t:'앱 분기 방식 확인 (.in-app CSS + window.__AF_APP__)',
+ why:'확정 결정: <b>서버 렌더 분기 금지</b>. 앱과 웹이 같은 URL을 쓰므로 서버에서 분기하면 크롤러에게 앱용 마크업이 노출될 수 있다.',
+ out:'구현 확인'},
+{id:'D-10',c:'D',p:'P1',due:'2026-08-28',t:'랜딩·이벤트 404 정리',
+ why:'dev 실측에서 출조 홈 가로형 배너 랜딩 <code>/event/competition</code>이 <b>404</b>(P0 갭 ③). 론칭 트래픽이 몰리는 시점에 404가 남아 있으면 유입도 색인도 함께 버린다.',
+ out:'404 목록 → 리다이렉트/복구'},
+
+/* ───────── E. 빌드·심사·릴리즈 ───────── */
+{id:'E-01',c:'E',p:'P0',due:'2026-08-05',t:'★ 릴리즈 형태 확정 — 기존 앱 업데이트인가, 신규 앱 등록인가',
+ why:'이게 갈리면 <b>일정표 전체가 달라진다</b>. 공지 문구(<i>“기존 앱을 실행하시면 업데이트 안내가 표시되니”</i>)와 v6.6.0 심사 이력으로 보면 <b>기존 앱 업데이트</b>로 보이지만 공식 확인이 없다.<br>· 업데이트라면 → 단계적 출시(Android)·Phased Release(iOS) 사용 가능, 클로즈드 테스트 요건 비해당.<br>· <b>신규 앱 등록이라면</b> → 단계적 출시를 못 쓰고(신규 앱 최초 출시엔 사용 불가), 개인 개발자 계정일 경우 <b>테스터 12인 × 14일 연속</b> + 프로덕션 액세스 심사가 직렬로 붙어 9/9가 위태롭다.',
+ out:'릴리즈 형태 확정서'},
+{id:'E-02',c:'E',p:'P0',due:'2026-08-06',t:'Google Play 개발자 계정 유형(조직/개인) 확인',
+ why:'2023-11-13 이후 생성된 <b>개인 계정</b>만 클로즈드 테스트 요건(12인·14일 연속) 대상이고 <b>조직 계정은 면제</b>다. E-01이 “신규 앱”으로 판명될 경우 즉시 크리티컬 패스가 되므로 지금 확인해둔다.',
+ out:'계정 유형 스크린샷'},
+{id:'E-03',c:'E',p:'P0',due:'2026-08-19',t:'기능 개발 완료 (Feature Freeze) — D-21',
+ why:'이 날 이후 신규 기능 투입 금지. 이후는 버그 수정만. QA(8/20~8/26)·코드 프리즈(8/26)·심사(8/31~9/1)가 뒤에 직렬로 붙는다.',
+ out:'기능 완료 확인서'},
+{id:'E-04',c:'E',p:'P0',due:'2026-08-26',t:'코드 프리즈 + prod RC 빌드 — D-14',
+ why:'심사 제출(8/31 Play · 9/1 App Store) 전에 <b>내부 QA와 리젝 1사이클 여유</b>를 확보하려면 여기가 마지노선. RC 빌드를 이 날 뽑아야 8/27~8/30 QA가 성립한다.',
+ out:'RC 빌드 (iOS/Android)'},
+{id:'E-05',c:'E',p:'P0',due:'2026-08-27',t:'내부 배포 시작 (TestFlight / Play 내부 테스트)',
+ why:'실기기 검증 없이 심사에 올리면 리젝 1회가 곧 일정 붕괴. 특히 웹뷰 브릿지·푸시·딥링크는 실기기에서만 재현된다.',
+ out:'내부 빌드 배포'},
+{id:'E-06',c:'E',p:'P0',due:'2026-09-01',t:'통합 QA (실기기 Tier1 8대, 320px 포함)',
+ why:'확정 기준: <b>320px 무손상 · user-scalable=no 금지 · min-width:320px</b>. 비표준 폭이 20.2%(360px 미만 13.6%)이고 고객앱이 WebView 하이브리드라 웹 CSS가 앱에 그대로 적용된다. Tier1 8대에 <b>배율 최대 설정 갤럭시 1대(320px 재현용)</b> 포함.',
+ out:'QA 결과 + 잔여 결함 목록'},
+{id:'E-07',c:'E',p:'P0',due:'2026-08-31',t:'Google Play 프로덕션 심사 제출 — D-9',
+ why:'구글 공식: 심사가 <b>최대 7일 이상</b> 걸릴 수 있고, <b>제출과 게시 사이에 최소 1주일 버퍼</b>를 권고한다. 9/9 게시를 지키려면 8/31이 실질 마지노선.',
+ out:'제출 완료'},
+{id:'E-08',c:'E',p:'P0',due:'2026-09-01',t:'App Store 심사 제출 + “no earlier than 9/9” 릴리즈 예약 — D-8',
+ why:'Apple 공식은 <i>“90%가 24시간 내 심사”</i>이지만, <b>9월은 iOS 신버전 시즌으로 적체 성수기</b>라는 지적이 반복된다. 승인돼도 조기 노출되지 않도록 <b>“Automatically release after App Review, no earlier than 2026-09-09”</b>로 예약할 것. Apple 스스로 이벤트 맞춤 출시에는 Expedited보다 릴리즈 예약을 먼저 쓰라고 권고한다.',
+ out:'제출 + 예약 설정 스크린샷'},
+{id:'E-09',c:'E',p:'P1',due:'2026-08-28',t:'원스토어 제출 (포함 시) + 사전 소요 문의',
+ why:'원스토어 공식 문서에 <b>검수 소요 기간 수치가 공개돼 있지 않다</b>. 메타 정보는 실시간 반영이지만 APK 업데이트·이용등급 변경은 검증 이후 반영. VersionCode 상향 필수. 예약 출시 기능 유무도 미확인이라 <b>devhelper@onestore.net에 사전 문의</b>가 안전하다.',
+ out:'문의 회신 + 제출'},
+{id:'E-10',c:'E',p:'P0',due:'2026-09-03',t:'Play 관리형 게시(Managed Publishing) ON 확인 + 9/9 게시 리허설',
+ why:'관리형 게시를 켜면 승인분이 자동 게시되지 않고 대기하다가 원하는 시점에 “Publish changes”로 나간다(반영은 수 분 내). <b>주의: 가격·출시 노트·기기 제외 규칙·인앱 상품은 관리형 게시를 우회해 즉시 반영</b>된다.',
+ out:'설정 확인 + 게시 절차서'},
+{id:'E-11',c:'E',p:'P1',due:'2026-09-08',t:'양 스토어 승인 상태 확인 + 컨틴전시 발동 기준',
+ why:'D-1에 한쪽이라도 미승인이면 결정이 필요하다. 옵션: ①웹만 먼저 오픈하고 앱은 승인 즉시 ②전체 순연. <b>웹뷰 구조라 웹 배포만으로도 신규 화면이 열린다</b>는 점이 여기서 중요한 안전판이 된다.',
+ out:'컨틴전시 플랜'},
+{id:'E-12',c:'E',p:'P0',due:'2026-09-09',t:'D-Day 릴리즈 — 웹 배포 · 앱 게시 순서 확정',
+ why:'고객앱은 <b>전체 웹뷰 + 앱패킹(네이티브 화면 없음)</b>. 따라서 실질 릴리즈는 <b>웹 배포</b>이고 앱 바이너리는 최소버전 플래그·딥링크 핸들러·권한·브릿지 정도만 담는다. 웹 배포 시각과 앱 게시 시각의 선후를 못 박아야 “앱은 새건데 웹은 구건” 또는 그 반대의 창이 안 생긴다.',
+ out:'릴리즈 런북 (시각별 체크)'},
+{id:'E-13',c:'E',p:'P0',due:'2026-09-02',t:'롤백 계획 확정',
+ why:'단계적 출시는 <b>업데이트에만</b> 가능하고 자동으로 비율이 올라가지 않는다(수동 증가). 중단해도 <b>이미 받은 사용자는 그 버전에 남는다</b>. 웹뷰 구조에서는 <b>웹 롤백이 훨씬 실효적</b>이므로 “앱은 유지, 웹만 되돌린다”를 1순위 시나리오로 잡는 게 현실적이다.',
+ out:'롤백 절차서 + 결정권자'},
+{id:'E-14',c:'E',p:'P1',due:'2026-08-26',t:'최소버전 플래그·강제업데이트 분기·버전 얼럿 이관',
+ why:'구버전 마스터에 있던 <b>L01 강제업데이트 분기 · MSG06 버전업데이트 얼럿 · L52 GET /config</b>가 신규 6섹션에 <b>전부 미이관</b>. 어드민 S13 “앱 버전 관리”에 최소버전 플래그가 신설 대기 중. A-06(구버전 지원 종료 공지)과 한 쌍이다.',
+ out:'구현 + 어드민 연동'},
+{id:'E-15',c:'E',p:'P1',due:'2026-09-02',t:'Empty/에러/시스템 메시지 자산 이관 검수',
+ why:'구버전 마스터의 <b>Empty 6종(L82~87)·에러 4종(404/500/네트워크/점검)·시스템 메시지 78종(MSG01~78)</b>이 신규 6섹션에 미이관 상태. 론칭 당일 장애·빈 상태가 그대로 흰 화면으로 노출된다.',
+ out:'이관 체크리스트'},
+{id:'E-16',c:'E',p:'P2',due:'2026-09-09',t:'스토어 릴리즈 노트(국문) 작성',
+ why:'Play에서 <b>출시 노트는 관리형 게시를 우회</b>해 즉시 반영되므로 별도 타이밍 관리가 필요하다.',
+ out:'양 스토어 노트'},
+
+/* ───────── F. 제품·QA ───────── */
+{id:'F-01',c:'F',p:'P0',due:'2026-08-12',t:'dev 갭 P0 13건 처리 계획 확정',
+ why:'2026-08-02 실측 감사 결과 갭 <b>60건(P0 13 · P1 34 · P2 13)</b>. P0에 <b>검색결과→선박상세 진입 불가, 빠른선박찾기가 항상 0건, 홈배너 404, 퀵메뉴 10개 전부 무반응, 쿠폰 인원조건 미검증(4인 쿠폰이 1명에 적용), 자리수>인원 허용, 0원 결제 도달</b>이 포함된다. 결제·쿠폰 계열은 금전 사고로 직결된다.',
+ out:'P0 13건 처리/유예 판정표'},
+{id:'F-02',c:'F',p:'P0',due:'2026-08-12',t:'“준비 중입니다” 3건 처리 방침 (회원탈퇴·고객센터·관심낚시)',
+ why:'세 기능 모두 토스트만 뜨는 미구현 상태. 특히 <b>회원탈퇴 미구현</b>은 약관·개인정보 처리방침이 보장하는 권리와 정면 충돌한다(개정 약관은 시행일 전 탈퇴 경로를 명시한다).',
+ out:'구현 vs 대체 경로 결정'},
+{id:'F-03',c:'F',p:'P0',due:'2026-08-14',t:'취소·환불 정책 수치 3중 불일치 확정',
+ why:'현재 세 곳이 서로 다르다 — 피그마 규정 <b>“환불 3~5영업일 / 출항 3일 전까지 무료취소”</b>, 피그마 취소완료 화면 <b>“2~3영업일”</b>, dev 실서비스 <b>“3일 이내는 취소/환불이 불가합니다”</b>. 공지·약관·앱이 각각 다른 숫자를 말하면 그 자체가 분쟁 소재다.',
+ out:'정본 수치 확정 + 3곳 동기화'},
+{id:'F-04',c:'F',p:'P1',due:'2026-08-14',t:'야간 알림 차단 시간 불일치 확정 (21~08 vs 22~08)',
+ why:'개편 공지는 “21시~익일 08시”, 설정 화면은 “22:00~08:00”. 정보통신망법상 야간 광고성 전송 제한과 직결되므로 숫자가 갈리면 안 된다.',
+ out:'정본 확정 + 문구 동기화'},
+{id:'F-05',c:'F',p:'P0',due:'2026-08-14',t:'어드민 R01~R06(정산 시점·부분취소·계좌이체 환불) 확정',
+ why:'고객앱 파악 문서가 <i>“고객 환불 UX와 직결 — 회의 확정 전 개발 착수 위험”</i>으로 명시한 항목. 여기가 안 정해지면 F-03(취소 정책)도 확정할 수 없다.',
+ out:'어드민 정책 확정서'},
+{id:'F-06',c:'F',p:'P1',due:'2026-08-14',t:'표준 앱 구성 갭 ★출시전필수 7건 처리',
+ why:'Figma 「표준 앱 구성 갭 체크리스트」 26건 중 ★출시전필수 7건 — 분류 E(앱구동)·F(웹뷰브릿지)·G(계정·법적)·H(상태이관). 앱패킹 구조에서 브릿지·상태 이관은 실기기에서만 드러난다.',
+ out:'7건 처리 확인'},
+{id:'F-07',c:'F',p:'P1',due:'2026-08-20',t:'영업팀 0731 수정요청 중 기존 확정 정책 충돌 6건 재확정 + 산출물 동기화',
+ why:'용어·동작 변경이 7/3~7/23 확정 정책과 <b>6건 충돌</b>(상품명 수정 가능 여부, 활성예약 정의, 잔여좌석 집계 기준, 캘린더 기본 펼침, 인원조정 기본값, 기간선택 방식). 변경 확정 시 <b>A4 책자·앱 내 도움말·사용법 영상 자막·정책 카드</b>를 함께 고쳐야 한다.',
+ out:'충돌 판정 + 산출물 4종 동기화'},
+{id:'F-08',c:'F',p:'P1',due:'2026-08-22',t:'도움말 진입 최종안 확정 반영 (H+K+P 권장안)',
+ why:'16안 중 권장 조합 <b>H(상시·맥락형) + K(첫 진입 1회) + P(마이페이지 안전망)</b>이 나왔으나 선택안 확정 기록이 없다. 임시 칩 <code>HELP2-CHIP-*</code>가 아직 남아 있고 정책 카드 문구 갱신도 대기 중.',
+ out:'3화면 반영 + 임시 칩 제거'},
+{id:'F-09',c:'F',p:'P1',due:'2026-09-02',t:'선박 상세 캘린더 320px 최우선 검수',
+ why:'날짜별 예약가능·공휴일·날씨/물때/일출몰/파고가 한 화면에 겹치는 <b>정보 밀도 최고 화면</b>이라 320px에서 가장 먼저 깨진다. 브레이크포인트 검증: 320×640 · 360×800 · 412×892 · iOS 393×852 · 폴더블 750×832.',
+ out:'해상도별 캡처 검수'},
+{id:'F-10',c:'F',p:'P2',due:'2026-08-26',t:'테스트 데이터 정리 (검색순위·공지목록)',
+ why:'실측에서 <b>실시간 검색순위 10위 중 8개가 QA 테스트값</b>이고, 공지 목록에 테스트 데이터와 이미 종료된 서비스가 남아 있다. 론칭 첫 화면에 이게 보이면 신뢰가 즉시 깎인다.',
+ out:'데이터 정리 완료'},
+
+/* ───────── G. 마케팅·지표 ───────── */
+{id:'G-01',c:'G',p:'P0',due:'2026-08-05',t:'GA 자동화 BIZ_CONTEXT의 “P26 8월통합 8/19” → 9/9 갱신',
+ why:'앱스크립트 프롬프트 상수에 <b>“CRITICAL P26 8월통합 8/19”</b>가 하드코딩돼 있어, 매일·매주 생성되는 리포트와 CPO 액션이 <b>잘못된 기준일로 계속 생성</b>된다. 갱신은 Code.gs 재붙여넣기 방식.',
+ out:'상수 갱신 + 배포'},
+{id:'G-02',c:'G',p:'P1',due:'2026-08-03',t:'마케팅시트 ID 8월분 교체',
+ why:'달이 바뀌면 <code>MKT_SHEET_ID</code>를 교체해야 하는 구조. 미교체 시 광고비·CPI/CPA가 빈 값으로 나온다. 이미 8월이므로 즉시.',
+ out:'8월 시트 ID 반영'},
+{id:'G-03',c:'G',p:'P0',due:'2026-08-19',t:'GA4 태깅 공백 반영 (출석체크·머니 충전/사용/적립·미션 완료)',
+ why:'7/21부터 <b>거의 매일 P0/P1로 반복</b>된 항목. “P26 스펙에 반영”이 계속 밀렸는데, 9/9 빌드의 Feature Freeze(8/19)를 놓치면 <b>또 다음 릴리즈로 이월</b>된다. 리텐션 지표를 못 보면 론칭 성패 판정 자체가 불가능하다.',
+ out:'이벤트 스펙 + 구현'},
+{id:'G-04',c:'G',p:'P1',due:'2026-08-19',t:'앱 버킷 내 예약/용품 분리',
+ why:'현재 앱 버킷이 합쳐져 있어 크로스셀 성과를 볼 수 없다. 주간리포트가 <i>“배포 때 이 분리부터 해결돼야 한다”</i>고 지목.',
+ out:'버킷 분리 구현'},
+{id:'G-05',c:'G',p:'P0',due:'2026-08-10',t:'8/10 공지 대량 발송 ↔ 쿠폰 실험 격리 확인',
+ why:'쿠폰 실험 배정자는 <b>8/20까지 타 캠페인에서 제외</b>하기로 되어 있다(자동발급 배치·다운로드센터 2경로 차단). 8/10 전 회원 대상 공지 푸시·알림톡이 <b>대조군 오염 경로</b>가 될 수 있다. 최소한 T/C 균등 발송을 보장하고 발송 로그를 남겨야 8/18 판정이 산다.',
+ out:'발송 세그먼트 검증 + 로그'},
+{id:'G-06',c:'G',p:'P0',due:'2026-08-18',t:'쿠폰 실험 판정일 확정(8/18 vs 8/20 문서 불일치) 및 판정 실행',
+ why:'실행판 설계서는 <b>8/18</b>, 전사 공유본은 <b>8/20</b>으로 두 날짜가 병존한다. 이 판정 결과로 <b>9월 본 캠페인(예산 2,500만 상한)</b>이 결정되므로 날짜와 기준(1차 판정 = T20 vs C 전환율, SRM 게이트, ITT)을 사전에 못 박아야 한다.',
+ out:'판정 기준서 + 판정 결과'},
+{id:'G-07',c:'G',p:'P0',due:'2026-08-20',t:'쿠폰 본 캠페인(8/19~) 랜딩·딥링크 재점검',
+ why:'론칭이 9/9로 밀리면서 본 캠페인 3주 전체가 <b>구버전 앱에서 집행</b>된다. 랜딩(L1 선박상세+캘린더 앵커 / L2 지역·시즌 목록 / L3 사용가능 목록)이 구버전 기준으로 남아 있어 9/9 이후 자동으로 깨진다.',
+ out:'구/신 랜딩 이원 운영안'},
+{id:'G-08',c:'G',p:'P0',due:'2026-08-12',t:'손절 게이트 재설정 (8/15 · 9/10)',
+ why:'7/23 회의에서 정한 게이트가 <b>8월 런칭 전제</b>였다. ①<b>8/15 선예약 40% 미달 → 광고 하향</b>은 9/9 론칭에선 신규 앱 유입 자체가 없어 무의미. ②<b>9/10 일평균 50% 미달 → 10월 예산 2억 방어</b>는 <b>론칭 다음 날 판정</b>이라 사실상 판정 불가. 판정일과 기준을 새로 정하지 않으면 10월 예산이 근거 없이 묶인다.',
+ out:'게이트 재정의 (일자·지표·조치)'},
+{id:'G-09',c:'G',p:'P0',due:'2026-08-12',t:'9월 공급 캘린더 오픈 캠페인 (현재 9월 32% 미오픈)',
+ why:'7/30 리포트: <i>“9월 캘린더가 32% 안 열린 상태”</i>. 9~10월 피크 목표는 월 6~7억, 9월 필요 좌석은 약 8,250석(오픈 200척 기준 척당 41석). <b>론칭 트래픽이 빈 캘린더에 착지하는 것</b>이 9/9 시나리오의 최대 매출 리스크다.',
+ out:'선주 대상 캘린더 오픈 드라이브'},
+{id:'G-10',c:'G',p:'P1',due:'2026-08-20',t:'9~10월 광고 집행 계획 론칭일 기준 재수립',
+ why:'피크 목표 6~7억은 1분기 광고에서 역산한 값이고, 8월 런칭 후 3주 램프업을 전제로 짜여 있었다. 론칭이 9/9면 <b>피크 한복판에서 시작</b>하므로 예산 곡선·소재 준비 시점이 달라진다.',
+ out:'재수립된 미디어 플랜'},
+{id:'G-11',c:'G',p:'P2',due:'2026-09-09',t:'론칭 D0~D7 모니터링 대시보드·알람 준비',
+ why:'전환·에러율·크래시·CS 인입을 하루 단위가 아니라 시간 단위로 봐야 롤백 결정이 가능하다.',
+ out:'대시보드 + 알람 임계값'},
+
+/* ───────── H. CS·운영 ───────── */
+{id:'H-01',c:'H',p:'P0',due:'2026-08-08',t:'CS 응대 스크립트 작성·교육 (연기·머니·쇼핑·취소·업데이트)',
+ why:'8/10 공지 게시 직후 문의가 몰린다. 특히 “왜 미뤄졌나 / 내 머니는 / 쇼핑은 언제 / 업데이트 안 하면 어떻게 되나” 4종은 반드시 표준 답변이 있어야 한다.',
+ out:'스크립트 + 교육 완료'},
+{id:'H-02',c:'H',p:'P1',due:'2026-08-08',t:'CS 운영시간 확정 (“평일 09~18시”는 현재 가정)',
+ why:'취소 개선 기획의 확정 배너 문구에 이미 이 시간이 박혀 있는데 실제 확인이 안 된 <b>가정</b> 상태다. 상담시간 외 콜백·알림톡 분기도 함께 정해야 한다.',
+ out:'운영시간 확정 + 문구 반영'},
+{id:'H-03',c:'H',p:'P1',due:'2026-09-02',t:'론칭 D0 대응 체계 (온콜·에스컬레이션·롤백 결정권자)',
+ why:'9/9은 수요일 = 인력 확보에 유리하지만, 동시에 <b>9~10월 피크 한복판</b>이라 장애가 곧 매출 손실이다. 롤백 결정권자를 사전에 한 명으로 지정해두지 않으면 결정이 지연된다.',
+ out:'온콜 로테이션 + 런북'},
+{id:'H-04',c:'H',p:'P1',due:'2026-08-26',t:'사용법 영상·A4 책자 용어 동기화',
+ why:'영업팀 0731 요청으로 <b>용어 6건</b>이 바뀌었고, 현재 비교 섹션에만 반영된 상태. 영상 자막·화면, 인쇄 책자, 앱 내 도움말이 서로 다른 용어를 쓰면 현장에서 그대로 혼선이 된다. 인쇄물은 리드타임이 있어 8월 내 확정 필요.',
+ out:'4종 산출물 동기화'},
+{id:'H-05',c:'H',p:'P2',due:'2026-08-20',t:'구글챗 요약봇 슬래시 명령 활성화 (미완)',
+ why:'데일리 요약봇은 배포·검증 완료지만 슬래시 명령만 미완. 론칭 기간 온디맨드 조회가 필요해진다.',
+ out:'봇 활성화'},
+{id:'H-06',c:'H',p:'P1',due:'2026-08-20',t:'로컬포인트 파일럿 일정 재조정 (8/19 출시 기준이었음)',
+ why:'로컬포인트 회의록의 출시 기준일이 <b>8/19</b>. 파일럿 지자체 협의·마스터 모집·“유입 증가” KPI 기산점이 전부 여기에 묶여 있어 재조정이 필요하다.',
+ out:'파일럿 일정 재수립'},
+{id:'H-07',c:'H',p:'P1',due:'2026-09-01',t:'하나손보 9/30 게이트 상태 점검',
+ why:'CPO 결정문: <b>2026-09-30까지 게이트 미충족 시 2026 시즌 포기</b>, 담보 재구성 서면 회신 12주(7/31 기준 → 10/23). 9/9 론칭 3주 뒤가 시즌 포기 판단 시점이라, 론칭 준비와 겹치기 전에 상태를 확인해둬야 한다.',
+ out:'회신 상태 확인 + 대응'}
+];
+
+const DECISIONS = [
+ {id:'D1', t:'약관·처리방침 11차 시행일', opt:'① 8/19 유지 &nbsp;|&nbsp; ② 9/9로 이동 &nbsp;|&nbsp; ③ 9/10 이후로 이동(안전판)', by:'2026-08-07', who:'법무 / CPO',
+  impact:'②를 택하면 30일 사전고지 역산상 <b>8/10이 재공고 마감</b>. ①을 유지하면 8/19~9/8 3주간 신약관이 요구하는 화면이 앱에 없는 상태가 된다. 이 문서의 나머지 일정이 전부 여기서 갈린다.'},
+ {id:'D2', t:'머니 충전·적립·사용 중단 시점', opt:'① 8/19 유지 &nbsp;|&nbsp; ② 9/9로 이동', by:'2026-08-07', who:'재무 / 법무',
+  impact:'신규 앱에 머니 화면이 없다는 점(8월 범위 외)을 고려하면 구앱 유지 기간엔 머니를 살려두는 ②가 자연스럽다. 다만 부칙 문언이 “8월” 기준이라 문언 수정이 따라온다. 지연은 이용자에게 유리한 변경이라는 점이 논거.'},
+ {id:'D3', t:'쇼핑몰 중단 시점 (현행 8/17)', opt:'① 8/17 유지 &nbsp;|&nbsp; ② 9/9로 이동', by:'2026-08-07', who:'커머스 / 운영',
+  impact:'쇼핑몰 중단은 앱 통합과 기술적으로 독립이라 ①도 가능하다. 다만 이미 “8/16까지 주문 가능”으로 고지했으므로 어느 쪽이든 <b>정정 공지</b>가 필요하다.'},
+ {id:'D4', t:'개인정보 보호책임자 성명', opt:'지정 → 3문서 반영', by:'2026-08-07', who:'경영 / CPO',
+  impact:'<b>공란이면 시행 자체가 불가</b>(재검수 판정문). 연기와 무관하게 남아 있는 최우선 블로커.'},
+ {id:'D5', t:'릴리즈 형태 — 업데이트 vs 신규 앱 등록', opt:'① 기존 앱 업데이트 &nbsp;|&nbsp; ② 신규 앱 등록', by:'2026-08-05', who:'개발 / PM',
+  impact:'②라면 Play 단계적 출시를 못 쓰고, 개인 개발자 계정일 경우 <b>테스터 12인 × 14일 연속 + 프로덕션 액세스 심사</b>가 직렬로 붙어 9/9가 위태롭다. 일정표 전체의 전제.'},
+ {id:'D6', t:'강제 업데이트 / 구버전 지원 종료일', opt:'① 즉시 강제 &nbsp;|&nbsp; ② 유예 후 강제 &nbsp;|&nbsp; ③ 선택 업데이트', by:'2026-08-07', who:'PM / CS',
+  impact:'공지가 답을 가지고 있어야 하는 질문(11직군 검토 지적). Android는 In-App Updates API의 IMMEDIATE/FLEXIBLE로 구현. 최소버전 플래그(어드민 S13) 개발과 한 쌍.'},
+ {id:'D7', t:'URL 라우트 변경 범위', opt:'① 기존 라우트 유지 &nbsp;|&nbsp; ② 부분 변경 &nbsp;|&nbsp; ③ 전면 개편', by:'2026-08-08', who:'개발 / SEO',
+  impact:'②③이면 원링크 인벤토리 전량 재매핑 + 301 매핑표 + AASA/assetlinks 선반영(9/1)이 전부 필수 경로로 들어온다.'},
+ {id:'D8', t:'SEO 선반영 범위 (론칭 전 미리 켤 항목)', opt:'① robots/sitemap/메타·JSON-LD만 &nbsp;|&nbsp; ② 상품 링크 크롤 가능화까지 &nbsp;|&nbsp; ③ 미룸', by:'2026-08-12', who:'개발 / 마케팅',
+  impact:'색인은 수 주가 걸리므로 ③을 택하면 <b>9~10월 피크의 검색 유입을 통째로 포기</b>하는 결정이 된다.'},
+ {id:'D9', t:'손절 게이트 재설정', opt:'8/15 · 9/10 게이트를 어떤 날짜·지표로 옮길 것인가', by:'2026-08-12', who:'경영 / 마케팅',
+  impact:'현행대로면 8/15는 판정 대상이 없고 9/10은 론칭 익일이라 판정 불가. 10월 예산 2억이 근거 없이 묶인 상태로 남는다.'},
+ {id:'D10',t:'원스토어 포함 여부', opt:'① 포함 &nbsp;|&nbsp; ② 이번 제외', by:'2026-08-10', who:'PM',
+  impact:'검수 소요가 공개돼 있지 않아 포함 시 사전 문의(devhelper@onestore.net)로 리드타임을 먼저 확보해야 한다.'}
+];
+
+const RISKS = [
+ {id:'R1', lv:'상', t:'약관 시행(8/19)과 앱 론칭(9/9) 사이 3주 공백',
+  d:'신약관이 전제하는 D-3 취소요청 접수·머니 환불 신청 화면이 구버전 앱에 없다. 규정은 시행됐는데 이행 수단이 없는 구간이 3주간 생긴다.',
+  m:'D1을 8/7까지 결정. 시행일 이동 시 8/10 재공고 마감을 지킬 것.'},
+ {id:'R2', lv:'상', t:'“8월 17일 오픈” 확약에 대한 2차 신뢰 손상',
+  d:'7/20 공지로 이미 확약했다. 여기서 또 미뤄지면 “잠시라더니”가 그대로 회수된다(11직군 검토가 사전 경고한 지점).',
+  m:'정정·사유 문단을 앞세우고, 후속 공지 트리거 목록(A-07)에 “일정 재변경 시” 항목을 반드시 포함.'},
+ {id:'R3', lv:'상', t:'9월 Apple 심사 성수기 적체',
+  d:'9월은 iOS 신버전 시즌으로 심사 적체가 반복 보고된다. 리젝 1회면 심사 시계가 처음부터 다시 돈다.',
+  m:'9/1 제출 + “no earlier than 9/9” 예약. 리젝 1사이클(2~3일) 버퍼를 일정에 내장. 웹뷰 앱은 심사지침 4.2(Minimum Functionality) 리스크가 있으므로 앱다운 기능(푸시·오프라인·기기 기능 활용)을 심사 노트에 명시.'},
+ {id:'R4', lv:'상', t:'Android 14 이하 사용자 딥링크 영구 파손',
+  d:'Android 14 이하는 App Links 주기 재검증이 없어, 도메인·경로가 바뀌면 <b>앱 업데이트를 받기 전까지 딥링크가 깨진 채로 남는다</b>.',
+  m:'assetlinks.json 9/1 선반영 + 구 경로를 신 경로와 병기(둘 다 검증). 앱 업데이트 유도(A-06·E-14)와 묶어서 관리.'},
+ {id:'R5', lv:'중', t:'론칭 트래픽이 빈 9월 캘린더에 착지',
+  d:'9월 캘린더 32% 미오픈. 론칭 유입이 예약 불가 화면으로 떨어지면 첫인상과 전환을 동시에 잃는다.',
+  m:'G-09 캘린더 오픈 드라이브를 8월 중 완료. 빈 배 딥링크는 지역·시즌 목록으로 폴백(C-11).'},
+ {id:'R6', lv:'중', t:'론칭 성과를 측정할 수 없는 상태',
+  d:'원링크 pid·c 미부착으로 전 클릭이 오가닉 집계. 출석·머니·미션 GA 태깅 공백. 앱 버킷 내 예약/용품 미분리.',
+  m:'C-01은 8/5까지, G-03·G-04는 Feature Freeze(8/19) 안에 반드시 넣는다. 놓치면 다음 릴리즈로 또 이월된다.'},
+ {id:'R7', lv:'중', t:'SEO 색인이 피크 시즌에 못 맞춰짐',
+  d:'구글 공식 기준 색인 이전에 수 주. 9/9에 한꺼번에 켜면 9~10월 피크에 검색 유입이 없다.',
+  m:'구조 변경 없이 지금 가능한 항목(robots·sitemap·메타·JSON-LD)을 8월 중 선반영(D-02).'},
+ {id:'R8', lv:'중', t:'배포 인프라 크레딧 제약',
+  d:'Netlify가 7/28 크레딧 소진으로 정지, 자동 복구 8/21. 8/10 공지 준비 구간이 정지 기간과 겹친다.',
+  m:'배포를 묶어서 1회로. 공개 URL 산출물은 GitHub Pages 등 대체 경로 활용.'},
+ {id:'R9', lv:'중', t:'쿠폰 실험 판정 오염',
+  d:'8/10 전 회원 공지 발송이 8/20까지 격리해야 할 실험군에 닿을 수 있다. 판정일도 문서마다 8/18·8/20으로 다르다.',
+  m:'G-05 발송 세그먼트 검증 + G-06 판정 기준 사전 확정.'},
+ {id:'R10',lv:'하', t:'결제·쿠폰 계열 P0 갭이 금전 사고로 전이',
+  d:'쿠폰 인원조건 미검증(4인 쿠폰이 1명에 적용), 자리수>인원 허용, 0원 결제 도달이 실측으로 확인됐다.',
+  m:'F-01에서 이 3건을 최우선 처리. 서버측 검증으로 막을 것.'}
+];
+
+const TIMELINE = [
+ {d:'2026-08-03', w:'월', k:'today', t:'오늘 · 준비 착수', s:'마케팅시트 8월분 교체(G-02)'},
+ {d:'2026-08-05', w:'수', k:'gate',  t:'릴리즈 형태 확정 (D5)', s:'원링크 pid·c 부착(C-01) · GA 기준일 갱신(G-01)'},
+ {d:'2026-08-07', w:'금', k:'gate',  t:'★ 약관 시행일 결정 (D1) · CPO 성명 확정 (D4)', s:'공지 개정 확정안 · 원링크 인벤토리'},
+ {d:'2026-08-08', w:'토', k:'',      t:'재공고 실행 (시행일 이동 시)', s:'30일 역산 안전판 — 8/10보다 앞당김'},
+ {d:'2026-08-10', w:'월', k:'major', t:'앱내공지 게시 (D-30)', s:'재공고 법정 마감일 · CS 스크립트 동시 배포'},
+ {d:'2026-08-12', w:'수', k:'',      t:'딥링크 스키마·SEO 선반영 착수', s:'dev 갭 P0 처리 계획 · 손절 게이트 재설정'},
+ {d:'2026-08-18', w:'화', k:'gate',  t:'쿠폰 실험 판정', s:'9월 본 캠페인(상한 2,500만) 결정'},
+ {d:'2026-08-19', w:'수', k:'major', t:'Feature Freeze (D-21)', s:'GA4 태깅·버킷 분리 반영 마감 · 상품 링크 크롤 가능화'},
+ {d:'2026-08-21', w:'금', k:'',      t:'Netlify 크레딧 복구', s:'배포 재개 가능'},
+ {d:'2026-08-26', w:'수', k:'major', t:'코드 프리즈 + prod RC 빌드 (D-14)', s:'이후 버그 수정만'},
+ {d:'2026-08-27', w:'목', k:'',      t:'내부 배포 (TestFlight / Play 내부테스트)', s:'통합 QA 시작'},
+ {d:'2026-08-28', w:'금', k:'',      t:'원스토어 제출 (포함 시)', s:'소요 미공개 — 사전 문의 필수'},
+ {d:'2026-08-31', w:'월', k:'major', t:'Google Play 프로덕션 심사 제출 (D-9)', s:'공식 최대 7일 이상 · 권고 버퍼 1주'},
+ {d:'2026-09-01', w:'화', k:'major', t:'App Store 심사 제출 + 릴리즈 예약 (D-8)', s:'“no earlier than 9/9” · AASA/assetlinks 선반영 마감'},
+ {d:'2026-09-02', w:'수', k:'',      t:'QA 종료 · 롤백 계획 확정 (D-7)', s:'딥링크 반영 대기 구간 시작'},
+ {d:'2026-09-03', w:'목', k:'',      t:'Play 관리형 게시 설정 확인', s:'9/9 수동 게시 리허설'},
+ {d:'2026-09-05', w:'토', k:'',      t:'링크 회귀 테스트 실행', s:'설치/미설치 × OS × 채널'},
+ {d:'2026-09-08', w:'화', k:'gate',  t:'양 스토어 승인 확인 (D-1)', s:'미승인 시 컨틴전시 발동'},
+ {d:'2026-09-09', w:'수', k:'launch',t:'🚀 론칭 — 웹 배포 + 앱 게시', s:'사이트맵 재제출 · D0 모니터링 체계 가동'}
+];
+
+const SOURCES = [
+ {t:'8월통합_공지_배너_상세_프로토타입.html (v3, 2026-07-20)', d:'공지 본문·배너·팝업 날짜 문구 원본, 발송 게이트 6건, 운영 페이즈'},
+ {t:'공지검토리포트_직군별.html (11직군, 2026-07-20)', d:'강제업데이트 공백 지적, 후속 공지 트리거 부재, 대비율 미달'},
+ {t:'재검수리포트_2차.md · 검증리포트_최종.md', d:'약관 3문서 공고 7/19·시행 8/19 일치, CPO 성명 = 유일 시행 정지조건, 회사확정 6건'},
+ {t:'고객앱 dev↔피그마 괴리 감사 (2026-08-02 실측)', d:'갭 60건(P0 13), dev 라우트맵, 딥링크 전부 미지원, 정책 충돌 3중'},
+ {t:'탐색·출조탭 SEO 설계서 (2026-07-31)', d:'CSR/sitemap 404/JSON-LD 0건/robots 자기차단, URL·스키마 확정 결정, 색인 규모'},
+ {t:'Claude 일간·주간 리포트 (7/21~7/30)', d:'원링크 pid·c 미부착 3일 연속 P0, GA 태깅 공백 반복, 9월 캘린더 32% 미오픈, B케이스 1,473명'},
+ {t:'7/23 전략회의 확정사항 · 쿠폰 실험 설계/집행', d:'손절 게이트 3종, 실집행 6,563명, 판정일 8/18↔8/20, 본 캠페인 8/19~·9/1 해금'},
+ {t:'고객앱_파악_및_3서비스_연동검증.md', d:'전체 웹뷰+앱패킹 구조, 커머스 8월 범위 외, 푸시 딥링크 “유일 미정의”'},
+ {t:'Apple App Review / App Store Connect 공식 문서', d:'90% 24시간 내 심사, 릴리즈 예약 3옵션, Phased Release는 업데이트 전용, 심사지침 4.2'},
+ {t:'Google Play 고객센터 공식 문서', d:'심사 최대 7일 이상·버퍼 1주 권고, 관리형 게시, 단계적 출시는 업데이트 전용, 클로즈드 테스트 12인×14일'},
+ {t:'Firebase Dynamic Links FAQ', d:'2025-08-25 완전 종료, 클릭 시 HTTP 404'},
+ {t:'Android App Links 검증 / Apple AASA 문서', d:'Android 15+ 최대 7일·14 이하 재검증 없음, AASA 기존 기기 주 1회 갱신'},
+ {t:'AppsFlyer OneLink 공식 문서', d:'deferred deep linking, UDL, 파라미터 체계로 앱 업데이트 최소화'},
+ {t:'Google Search Central — Site moves with URL changes', d:'색인 이전 수 주, 301 최소 1년 유지, 주소변경 도구는 도메인 이전 전용'}
+];
+
+
+/* ── 로컬 저장 레이어 (Firebase 미도달 시에도 동작) ── */
+(function(){
+  var LS='af_launch_0909_state';
+  var dot=document.getElementById('fbdot'), txt=document.getElementById('fbtxt');
+  window.__stat=function(cls,s){ dot.className='dot '+cls; txt.textContent=s; };
+  function load(){ try{ return JSON.parse(localStorage.getItem(LS)||'{}'); }catch(e){ return {}; } }
+  window.__saveLocal=function(o){ try{ localStorage.setItem(LS, JSON.stringify(o)); }catch(e){} };
+  window.__state = load();
+  window.__fbUpdate = null;   // 모듈이 준비되면 주입
+  window.__persist = function(id, obj){
+    window.__state[id]=obj;
+    window.__saveLocal(window.__state);
+    if(window.__render) window.__render(true);
+    if(window.__fbUpdate){ window.__fbUpdate(id, obj); }
+    else { window.__stat('local','이 브라우저에만 저장됨'); }
+    return true;
+  };
+  window.__stat('','연결 중…');
+  setTimeout(function(){ if(!window.__fbUpdate) window.__stat('local','오프라인 · 이 브라우저에만 저장됨'); }, 6000);
+})();
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+
+const CFG = {
+  apiKey: "AIzaSyDtYqc0dRClnx9EZWkg98LGR-AnfqlIjdI",
+  authDomain: "aboutfishing-captain.firebaseapp.com",
+  databaseURL: "https://aboutfishing-captain-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "aboutfishing-captain"
+};
+const PKEY = 'af-launch-0909';
+const stat = window.__stat;
+
+try{
+  const app = initializeApp(CFG);
+  const auth = getAuth(app);
+  const db  = getDatabase(app);
+  const baseRef = ref(db, 'projects/' + PKEY);
+  stat('', '인증 중…');
+
+  window.__fbUpdate = function(id, obj){
+    const patch = {}; patch['edits/' + id] = JSON.stringify(obj);
+    update(baseRef, patch)
+      .then(()=> stat('ok','RTDB 저장됨 · ' + new Date().toLocaleTimeString('ko-KR')))
+      .catch(e=>{ stat('local','RTDB 쓰기 거부 — 이 브라우저에만 저장 (' + (e.code||e.message) + ')'); });
+  };
+
+  signInAnonymously(auth).catch(e=> stat('err','익명 인증 실패 — 로컬 저장으로 동작 (' + (e.code||'') + ')'));
+  onAuthStateChanged(auth, u=>{
+    if(!u) return;
+    onValue(ref(db, 'projects/' + PKEY + '/edits'), snap=>{
+      const v = snap.val() || {};
+      Object.keys(v).forEach(k=>{
+        try{ window.__state[k] = (typeof v[k]==='string') ? JSON.parse(v[k]) : v[k]; }catch(e){}
+      });
+      window.__saveLocal(window.__state);
+      stat('ok','RTDB 연결됨 · 실시간 동기화');
+      window.__render && window.__render(true);
+    }, err=>{ stat('local','RTDB 읽기 거부 — 로컬 저장으로 동작 (' + (err.code||'') + ')'); });
+  });
+}catch(e){ stat('err','Firebase 초기화 실패 — 로컬 저장으로 동작'); }
+</script>
+
+<script>
+/* ── 날짜 의존성 표 ── */
+const DEPS = [
+ {t:'약관·개인정보 처리방침 11차', d:'공고 7/19 · <b>시행 8/19</b> (3문서 일치)',
+  e:'앱보다 <b>3주 먼저</b> 시행. 신약관이 전제하는 D-3 취소요청·머니 환불 화면이 구앱에 없어 “규정만 있고 이행 수단이 없는” 구간 발생. 시행일 이동 시 <b>8/10이 30일 재공고 마감</b>.', l:'B-01 B-02 B-05'},
+ {t:'개인정보 보호책임자(CPO) 성명', d:'현재 <b>공란</b>',
+  e:'연기와 무관하게 <b>시행 자체가 불가</b>한 정지조건. 재검수 판정문이 명시.', l:'B-03'},
+ {t:'앱내공지 본문', d:'8/17(4곳) · 8/19(12곳) · 8/18(4곳) · 8/16(2곳)',
+  e:'그대로 8/10에 게시하면 전부 오고지. 리드 문단·타임라인·머니표·쇼핑 안내·FAQ·푸터가 전부 8월 기준.', l:'A-01'},
+ {t:'공지 팝업 저장키 / 마일스톤', d:'<code>notice_202608_dismissed_at</code> · 재노출 8/17·8/19 D-1',
+  e:'키를 안 바꾸면 “7일간 안 보기”를 누른 회원이 <b>새 공지를 못 봄</b>. 마일스톤도 8월에 헛 노출되고 9월엔 미노출.', l:'A-03 A-04'},
+ {t:'배너 운영 페이즈', d:'①7/20~8/16 ②8/17~18 ③8/19~',
+  e:'배너 교체 시점표가 전부 8월 기준. 미수정 시 8/17에 “오픈 안내” 배너가 자동 노출됨.', l:'A-05'},
+ {t:'머니 충전·적립·사용 중단', d:'<b>8/19</b>부터 중단, 8/18까지 현행',
+  e:'신규 앱에 머니 화면이 없음(8월 범위 외). 구앱 유지 구간에 머니만 중단되면 이용자는 잔액을 볼 화면이 없음. 부칙 문언도 “8월” 기준.', l:'B-06 D2'},
+ {t:'쇼핑몰 중단', d:'<b>8/17</b>부터 중단, 8/16까지 주문 가능',
+  e:'앱 통합과 기술적으로 독립이라 유지도 가능. 다만 어느 쪽이든 이미 고지한 날짜라 <b>정정 공지 필요</b>.', l:'D3'},
+ {t:'쿠폰 유효기간', d:'D0 7/28 발송 → <b>만료 8/11</b> (14일)',
+  e:'연기와 무관하게 만료 도래. 단 발송 문구의 “9~10월 출조도 가능”이 <b>9~10월 캘린더가 닫힌 배 1,473명</b>에겐 사실과 다른 상태로 이미 나감.', l:'C-11'},
+ {t:'쿠폰 실험 판정일', d:'<b>8/18</b>(실행판) ↔ <b>8/20</b>(공유본) 병존',
+  e:'이 판정으로 9월 본 캠페인(상한 2,500만)이 결정됨. 날짜와 기준이 문서마다 다른 상태로 판정하면 결과 자체가 다퉈짐.', l:'G-06'},
+ {t:'쿠폰 본 캠페인 / 해금', d:'<b>8/19~</b> 본 캠페인 · <b>9/1</b> 해금',
+  e:'본 캠페인 3주 전체가 <b>구버전 앱에서 집행</b>됨. 랜딩·딥링크가 구버전 기준이라 9/9에 자동으로 깨짐.', l:'G-07'},
+ {t:'대조군 격리 기한', d:'실험 배정자 <b>8/20까지</b> 타 캠페인 제외',
+  e:'8/10 전 회원 공지 발송이 오염 경로가 될 수 있음. 최소한 T/C 균등 발송 보장 + 로그 확보 필요.', l:'G-05'},
+ {t:'손절 게이트 ①', d:'<b>8/15</b> 선예약 40% 미달 → 광고 하향',
+  e:'8월 런칭 전제 지표. 9/9 론칭이면 8/15 시점에 신규 앱 유입 자체가 없어 <b>판정 대상이 없음</b>.', l:'G-08'},
+ {t:'손절 게이트 ③', d:'<b>9/10</b> 일평균 50% 미달 → 10월 예산 2억 방어',
+  e:'<b>론칭 다음 날 판정</b>이라 사실상 판정 불가. 재설정 없으면 10월 예산이 근거 없이 묶인 채로 남음.', l:'G-08'},
+ {t:'GA 자동화 기준일', d:'프롬프트 상수에 <b>“P26 8월통합 8/19”</b> 하드코딩',
+  e:'매일·매주 리포트와 CPO 액션이 잘못된 기준일로 계속 생성됨.', l:'G-01'},
+ {t:'GA 마케팅시트', d:'월 단위 시트 ID 교체 필요',
+  e:'8월분 미교체 시 광고비·CPI/CPA가 빈 값. 이미 8월.', l:'G-02'},
+ {t:'로컬포인트 파일럿', d:'<b>8/19</b> 출시 기준',
+  e:'파일럿 지자체 협의·마스터 모집·“유입 증가” KPI 기산점이 8/19에 묶여 있음.', l:'H-06'},
+ {t:'선주 모바일 런칭', d:'7/23 회의 확정 <b>8월 초</b>',
+  e:'영업 현장 운영·안내 동영상 배포 시점 재조정 필요. 용어 변경 6건 반영도 인쇄물 리드타임에 걸림.', l:'H-04 F-07'},
+ {t:'Netlify 크레딧', d:'7/28 소진 → 자동 복구 <b>8/21</b>',
+  e:'8/10 공지 준비 구간이 정지 기간과 겹침. 공개 URL 산출물 배포가 8/21 전까지 막힘.', l:'D-08'},
+ {t:'하나손보 게이트', d:'<b>9/30</b>까지 미충족 시 2026 시즌 포기',
+  e:'9/9 론칭 3주 뒤가 판단 시점. 론칭 대응과 겹치기 전에 상태 확인 필요.', l:'H-07'},
+ {t:'9월 공급 캘린더', d:'7/30 기준 <b>9월 32% 미오픈</b>',
+  e:'론칭 유입이 예약 불가 화면에 착지. 9월 필요 좌석 약 8,250석(오픈 200척 기준 척당 41석).', l:'G-09'}
+];
+
+/* ── util ── */
+const $ = s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const D=(s)=>{const p=s.split('-');return new Date(+p[0], +p[1]-1, +p[2]);};
+const TODAY=D(META.today), LAUNCH=D(META.launch), NOTICE=D(META.notice);
+const days=(a,b)=>Math.round((b-a)/86400000);
+const WD=['일','월','화','수','목','금','토'];
+const fmt=s=>{const d=D(s);return (d.getMonth()+1)+'/'+d.getDate()+'('+WD[d.getDay()]+')';};
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+
+/* ── header chips ── */
+$('#dchips').innerHTML = [
+  ['오늘', fmt(META.today), '', ''],
+  ['앱내공지 게시', fmt(META.notice), 'D-'+days(TODAY,NOTICE), 'hot'],
+  ['론칭', fmt(META.launch), 'D-'+days(TODAY,LAUNCH), 'hot'],
+  ['Feature Freeze', fmt('2026-08-19'), 'D-'+days(TODAY,D('2026-08-19')), ''],
+  ['코드 프리즈·RC', fmt('2026-08-26'), 'D-'+days(TODAY,D('2026-08-26')), ''],
+  ['Play 심사 제출', fmt('2026-08-31'), 'D-'+days(TODAY,D('2026-08-31')), ''],
+  ['App Store 제출', fmt('2026-09-01'), 'D-'+days(TODAY,D('2026-09-01')), '']
+].map(([a,b,c,k])=>`<div class="dchip ${k}"><span>${a}</span><b>${b}</b>${c?`<span style="opacity:.7">${c}</span>`:''}</div>`).join('');
+$('#cnt').textContent = ITEMS.length;
+$('#ftr').innerHTML = META.title + ' · ' + META.ver + ' · 상태 저장 Firebase RTDB <code>projects/'+'af-launch-0909</code>';
+
+/* ── deps / decisions / risks / sources ── */
+$('#dep').innerHTML = DEPS.map(x=>`<tr><td style="min-width:130px"><b>${x.t}</b></td><td style="min-width:150px">${x.d}</td><td>${x.e}</td><td style="white-space:nowrap;color:var(--blue);font-weight:600;font-size:11.5px">${x.l}</td></tr>`).join('');
+$('#dec').innerHTML = DECISIONS.map(x=>`<tr><td style="font-weight:900;color:var(--blue)">${x.id}</td><td style="min-width:130px"><b>${x.t}</b></td><td style="min-width:150px;font-size:12px">${x.opt}</td><td>${x.impact}</td><td style="white-space:nowrap"><b>${fmt(x.by)}</b><br><span style="color:var(--desc);font-size:11.5px">${x.who}</span></td></tr>`).join('');
+$('#risk').innerHTML = RISKS.map(x=>`<div class="risk"><div class="rh"><span class="lv ${x.lv}">${x.lv}</span><span class="pid">${x.id}</span><span class="rt">${x.t}</span></div><div class="rd">${x.d}</div><div class="rm"><b>대응</b> · ${x.m}</div></div>`).join('');
+$('#src').innerHTML = SOURCES.map(x=>`<tr><td style="min-width:200px"><b>${x.t}</b></td><td>${x.d}</td></tr>`).join('');
+
+/* ── timeline ── */
+$('#tl').innerHTML = TIMELINE.map(x=>{
+  const dd = days(TODAY, D(x.d));
+  return `<div class="tli ${x.k}"><div class="tlc">
+    <div class="tld">${fmt(x.d)} <span class="dd">${dd===0?'오늘':(dd>0?'D-'+dd:'D+'+(-dd))}</span></div>
+    <div class="tlt">${x.t}</div><div class="tls">${x.s}</div></div></div>`;
+}).join('');
+
+/* ── filters ── */
+let F = {cat:'ALL', pri:'ALL', sta:'ALL', q:''};
+const STA = {todo:'미착수', doing:'진행중', done:'완료', hold:'보류'};
+
+function chips(el, opts, key, cls){
+  $(el).innerHTML = opts.map(o=>`<button class="tg ${F[key]===o.v?'on':''} ${cls&&o.v==='P0'?'p0':''}" data-k="${key}" data-v="${o.v}">${o.l}</button>`).join('');
+}
+function buildChips(){
+  chips('#fcat', [{v:'ALL',l:'전체'}].concat(CATS.map(c=>({v:c.id,l:c.id+'. '+c.name}))), 'cat');
+  chips('#fpri', [{v:'ALL',l:'우선순위'},{v:'P0',l:'P0'},{v:'P1',l:'P1'},{v:'P2',l:'P2'}], 'pri', true);
+  chips('#fsta', [{v:'ALL',l:'상태'},{v:'todo',l:'미착수'},{v:'doing',l:'진행중'},{v:'done',l:'완료'}], 'sta');
+}
+document.addEventListener('click', e=>{
+  const b = e.target.closest('.tg[data-k]'); if(!b) return;
+  F[b.dataset.k] = (F[b.dataset.k]===b.dataset.v && b.dataset.v!=='ALL') ? 'ALL' : b.dataset.v;
+  buildChips(); render();
+});
+$('#q').addEventListener('input', e=>{ F.q = e.target.value.trim().toLowerCase(); render(); });
+let allOpen=false;
+$('#expand').addEventListener('click', ()=>{ allOpen=!allOpen; $('#expand').textContent = allOpen?'전체 접기':'전체 펼치기'; $$('.item').forEach(i=>i.classList.toggle('open', allOpen)); });
+
+/* ── state helpers ── */
+function st(id){ const s = (window.__state||{})[id] || {}; return {s:s.s||'todo', o:s.o||'', m:s.m||'', at:s.at||''}; }
+function setSt(id, patch){
+  const cur = st(id); const next = Object.assign({}, cur, patch, {at:new Date().toISOString()});
+  window.__persist(id, next);
+}
+window.__setSt = setSt;
+
+/* ── KPI ── */
+function kpi(){
+  const all = ITEMS.length;
+  const cnt = {todo:0,doing:0,done:0,hold:0};
+  let p0=0, p0done=0, over=0;
+  ITEMS.forEach(i=>{ const s=st(i.id); cnt[s.s]=(cnt[s.s]||0)+1;
+    if(i.p==='P0'){ p0++; if(s.s==='done') p0done++; }
+    if(s.s!=='done' && days(TODAY,D(i.due))<0) over++;
+  });
+  const pct = Math.round(cnt.done/all*100);
+  $('#kpis').innerHTML = [
+    ['전체 준비항목', all+'<small> 건</small>', `<div class="bar"><i style="width:${pct}%"></i></div><div style="font-size:11px;color:var(--desc);margin-top:4px">완료 ${cnt.done} · 진행 ${cnt.doing} · 미착수 ${cnt.todo}${cnt.hold?' · 보류 '+cnt.hold:''}</div>`],
+    ['진행률', pct+'<small>%</small>', `<div style="font-size:11px;color:var(--desc);margin-top:8px">${cnt.done} / ${all}</div>`],
+    ['P0 (블로커)', p0done+'<small> / '+p0+'</small>', `<div class="bar"><i style="width:${Math.round(p0done/p0*100)}%;background:${p0done===p0?'var(--green)':'var(--red)'}"></i></div><div style="font-size:11px;color:var(--desc);margin-top:4px">미완 ${p0-p0done}건</div>`],
+    ['기한 경과 (미완)', over+'<small> 건</small>', `<div style="font-size:11px;color:${over?'var(--red)':'var(--desc)'};margin-top:8px;font-weight:${over?700:400}">${over?'즉시 확인 필요':'없음'}</div>`]
+  ].map(([l,v,x])=>`<div class="card kpi"><div class="lab">${l}</div><div class="val">${v}</div>${x}</div>`).join('');
+}
+
+/* ── list ── */
+function render(keepOpen){
+  const open = keepOpen ? new Set($$('.item.open').map(e=>e.dataset.id)) : new Set();
+  const q = F.q;
+  const shown = ITEMS.filter(i=>{
+    if(F.cat!=='ALL' && i.c!==F.cat) return false;
+    if(F.pri!=='ALL' && i.p!==F.pri) return false;
+    if(F.sta!=='ALL' && st(i.id).s!==F.sta) return false;
+    if(q && !(i.id+i.t+i.why+i.out).toLowerCase().includes(q)) return false;
+    return true;
+  });
+  const out = CATS.map(c=>{
+    const rows = shown.filter(i=>i.c===c.id);
+    if(!rows.length) return '';
+    const doneN = rows.filter(i=>st(i.id).s==='done').length;
+    return `<div class="cat"><div class="cathead"><span class="catdot" style="background:${c.color}"></span>
+      <h3>${c.id}. ${c.name}</h3><span class="cd">${c.desc}</span><span class="cn">${doneN}/${rows.length}</span></div>
+      ${rows.map(i=>itemHTML(i, open.has(i.id))).join('')}</div>`;
+  }).join('');
+  $('#list').innerHTML = out || '<div class="card" style="padding:26px;text-align:center;color:var(--desc)">조건에 맞는 항목이 없습니다.</div>';
+  kpi();
+}
+window.__render = render;
+
+function itemHTML(i, isOpen){
+  const s = st(i.id);
+  const dd = days(TODAY, D(i.due));
+  const dcls = s.s==='done' ? '' : (dd<0 ? 'soon' : (dd<=3 ? 'soon' : (dd<=7 ? 'near' : '')));
+  const dtxt = s.s==='done' ? fmt(i.due) : fmt(i.due) + (dd<0 ? ' · 경과 '+(-dd)+'일' : ' · D-'+dd);
+  const ck = s.s==='done'?'on':(s.s==='doing'?'doing':(s.s==='hold'?'hold':''));
+  return `<div class="item ${s.s==='done'?'done':''} ${isOpen?'open':''}" data-id="${i.id}">
+    <div class="ihead" onclick="if(!event.target.closest('.chk'))this.parentNode.classList.toggle('open')">
+      <div class="chk ${ck}" onclick="event.stopPropagation();__cycle('${i.id}')" title="클릭하면 미착수→진행중→완료 순으로 바뀝니다"></div>
+      <div class="imain">
+        <div class="itop"><span class="pid">${i.id}</span><span class="pri ${i.p}">${i.p}</span>
+          ${s.o?`<span class="owner-mini">@${esc(s.o)}</span>`:''}
+          <span class="due ${dcls}">${dtxt}</span></div>
+        <div class="it">${i.t}</div>
+      </div>
+      <span class="caret">▶</span>
+    </div>
+    <div class="ibody">
+      <div class="why"><span class="wl">왜 필요한가</span>${i.why}</div>
+      <div class="out">산출물 · <b>${i.out}</b></div>
+      <div class="fields">
+        <div class="fld"><label>상태</label><select onchange="__setSt('${i.id}',{s:this.value})">
+          ${Object.keys(STA).map(k=>`<option value="${k}" ${s.s===k?'selected':''}>${STA[k]}</option>`).join('')}
+        </select></div>
+        <div class="fld"><label>담당자</label><input value="${esc(s.o)}" placeholder="이름 입력" onchange="__setSt('${i.id}',{o:this.value})"></div>
+        <div class="fld wide"><label>메모 · 진행 상황</label><textarea placeholder="확인된 사실, 막힌 지점, 결정 내용" onchange="__setSt('${i.id}',{m:this.value})">${esc(s.m)}</textarea></div>
+      </div>
+      <div class="saved">${s.at?('최종 수정 '+new Date(s.at).toLocaleString('ko-KR')):''}</div>
+    </div>
+  </div>`;
+}
+window.__cycle = function(id){
+  const order = ['todo','doing','done'];
+  const cur = st(id).s;
+  const next = order[(order.indexOf(cur)+1) % order.length] || 'todo';
+  setSt(id, {s:next});
+};
+
+buildChips();
+render();
+
+</script>
+</body>
+</html>
