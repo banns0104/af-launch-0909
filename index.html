@@ -755,7 +755,10 @@ const CFG = {
   databaseURL: "https://aboutfishing-captain-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "aboutfishing-captain"
 };
-const PKEY = 'af-launch-0909';
+/* 기존 RTDB 규칙(projects/captain-mobile/edits/$key = {value,by,at})을 그대로 사용.
+   키 프리픽스 L0909__ 로 다른 프로젝트 데이터와 분리한다. */
+const PKEY = 'captain-mobile';
+const PFX  = 'L0909__';
 const stat = window.__stat;
 
 try{
@@ -766,7 +769,8 @@ try{
   stat('', '인증 중…');
 
   window.__fbUpdate = function(id, obj){
-    const patch = {}; patch['edits/' + id] = JSON.stringify(obj);
+    const patch = {};
+    patch['edits/' + PFX + id] = { value: JSON.stringify(obj), by: (obj.o || 'anon'), at: Date.now() };
     update(baseRef, patch)
       .then(()=> stat('ok','RTDB 저장됨 · ' + new Date().toLocaleTimeString('ko-KR')))
       .catch(e=>{ stat('local','RTDB 쓰기 거부 — 이 브라우저에만 저장 (' + (e.code||e.message) + ')'); });
@@ -778,7 +782,10 @@ try{
     onValue(ref(db, 'projects/' + PKEY + '/edits'), snap=>{
       const v = snap.val() || {};
       Object.keys(v).forEach(k=>{
-        try{ window.__state[k] = (typeof v[k]==='string') ? JSON.parse(v[k]) : v[k]; }catch(e){}
+        if (k.indexOf(PFX) !== 0) return;
+        const id = k.slice(PFX.length);
+        const raw = v[k] && typeof v[k] === 'object' ? v[k].value : v[k];
+        try{ window.__state[id] = (typeof raw === 'string') ? JSON.parse(raw) : raw; }catch(e){}
       });
       window.__saveLocal(window.__state);
       stat('ok','RTDB 연결됨 · 실시간 동기화');
@@ -853,7 +860,7 @@ $('#dchips').innerHTML = [
   ['App Store 제출', fmt('2026-09-01'), 'D-'+days(TODAY,D('2026-09-01')), '']
 ].map(([a,b,c,k])=>`<div class="dchip ${k}"><span>${a}</span><b>${b}</b>${c?`<span style="opacity:.7">${c}</span>`:''}</div>`).join('');
 $('#cnt').textContent = ITEMS.length;
-$('#ftr').innerHTML = META.title + ' · ' + META.ver + ' · 상태 저장 Firebase RTDB <code>projects/'+'af-launch-0909</code>';
+$('#ftr').innerHTML = META.title + ' · ' + META.ver + ' · 상태 저장 Firebase RTDB <code>projects/captain-mobile/edits/L0909__*</code>';
 
 /* ── deps / decisions / risks / sources ── */
 $('#dep').innerHTML = DEPS.map(x=>`<tr><td style="min-width:130px"><b>${x.t}</b></td><td style="min-width:150px">${x.d}</td><td>${x.e}</td><td style="white-space:nowrap;color:var(--blue);font-weight:600;font-size:11.5px">${x.l}</td></tr>`).join('');
