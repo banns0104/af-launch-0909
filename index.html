@@ -7,199 +7,259 @@
 <title>어바웃피싱 8월 통합 서비스 — 9/9 론칭 전환 준비서</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --blue:#0041FF; --blt:#EBF0FF; --blk:#1A1A1A; --body:#363636; --desc:#767676;
-  --green:#00A86B; --red:#D93025; --orange:#C96A00; --purple:#6D28D9;
-  --bg:#F5F5F7; --line:#E8E8E8; --card:#fff;
-  --r:14px; --sh:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.04);
+  --ink:#141414; --ink2:#5A5A58; --ink3:#8C8C89;
+  --line:#E3E2DE; --line2:#EFEEEB; --paper:#FCFCFB; --card:#FFFFFF;
+  --accent:#A3231D; --accent-bg:#FBF4F3;
 }
 *{box-sizing:border-box;-webkit-text-size-adjust:100%}
 html,body{margin:0;padding:0}
-body{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--body);font-size:14px;line-height:1.65;min-width:320px;word-break:keep-all}
-a{color:var(--blue)}
-code{background:#F0F2F5;border-radius:4px;padding:1px 5px;font-size:.92em;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#334}
-b,strong{color:var(--blk);font-weight:700}
-i{color:var(--desc);font-style:normal}
-u{text-decoration-color:var(--blue);text-underline-offset:2px}
+body{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;
+  background:var(--paper);color:var(--ink2);font-size:13.5px;line-height:1.78;min-width:320px;
+  word-break:keep-all;-webkit-font-smoothing:antialiased;font-feature-settings:"tnum"}
+a{color:var(--ink);text-underline-offset:3px;text-decoration-thickness:1px}
+b,strong{color:var(--ink);font-weight:700}
+i{color:var(--ink3);font-style:normal}
+u{text-decoration:none;box-shadow:inset 0 -6px 0 #F0EFEB}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink);
+  background:#F5F4F1;padding:1px 5px;border-radius:3px}
+.acc{color:var(--accent)}
 
 /* ── header ── */
-header{background:linear-gradient(135deg,#001C6E 0%,#0041FF 100%);color:#fff;padding:28px 20px 22px}
-.hw{max-width:1180px;margin:0 auto}
-.eyebrow{font-size:12px;letter-spacing:.08em;opacity:.75;font-weight:500}
-h1{font-size:clamp(20px,4.4vw,30px);font-weight:900;margin:6px 0 4px;line-height:1.3;color:#fff}
-.sub{font-size:13px;opacity:.85}
-header b{color:#fff}
-.dchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.dchip{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 14px;font-size:12.5px;display:flex;align-items:center;gap:7px}
-.dchip b{color:#fff;font-size:15px}
-.dchip.hot{background:#fff;color:var(--blue);border-color:#fff}
-.dchip.hot b{color:var(--blue)}
-
-/* ── layout ── */
-.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 80px}
-section{margin-bottom:34px;scroll-margin-top:70px}
-h2{font-size:19px;font-weight:900;color:var(--blk);margin:0 0 4px;display:flex;align-items:center;gap:9px}
-h2 .n{background:var(--blue);color:#fff;width:24px;height:24px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;font-size:12.5px;flex:0 0 auto}
-.lede{color:var(--desc);font-size:13px;margin:0 0 14px}
+header{background:var(--card);border-bottom:1px solid var(--line);padding:44px 24px 0}
+.hw{max-width:1040px;margin:0 auto}
+.eyebrow{font-size:10.5px;letter-spacing:.22em;color:var(--ink3);font-weight:500;text-transform:uppercase}
+h1{font-size:clamp(23px,3.6vw,33px);font-weight:700;letter-spacing:-.025em;line-height:1.28;
+  margin:14px 0 10px;color:var(--ink)}
+.sub{font-size:12.5px;color:var(--ink3);margin-bottom:26px}
+.sub b{color:var(--ink2);font-weight:500}
+.dchips{display:flex;flex-wrap:wrap;border-top:1px solid var(--line2)}
+.dchip{padding:13px 26px 13px 0;margin-right:26px;border-right:1px solid var(--line2);
+  display:flex;flex-direction:column;gap:1px;min-width:96px}
+.dchip:last-child{border-right:none}
+.dchip span:first-child{font-size:10.5px;color:var(--ink3);letter-spacing:.02em}
+.dchip b{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.dchip .dd{font-size:11px;color:var(--ink3);font-weight:500}
+.dchip.hot .dd{color:var(--ink);font-weight:700}
+.dchip.launch b,.dchip.launch .dd{color:var(--accent)}
 
 /* ── nav ── */
-nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nv{max-width:1180px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;padding:0 10px;scrollbar-width:none}
+nav{position:sticky;top:0;z-index:60;background:rgba(252,252,251,.96);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.nv{max-width:1040px;margin:0 auto;display:flex;gap:0;overflow-x:auto;padding:0 24px;scrollbar-width:none}
 .nv::-webkit-scrollbar{display:none}
-.nv a{padding:12px 11px;font-size:12.5px;color:var(--desc);text-decoration:none;white-space:nowrap;font-weight:500;border-bottom:2px solid transparent}
-.nv a:hover{color:var(--blue)}
+.nv a{padding:13px 16px 13px 0;margin-right:16px;font-size:12px;color:var(--ink3);text-decoration:none;
+  white-space:nowrap;font-weight:500}
+.nv a:hover{color:var(--ink)}
 
-/* ── cards ── */
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
-.grid{display:grid;gap:12px}
-.g4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
-.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-.kpi{padding:14px 16px}
-.kpi .lab{font-size:11.5px;color:var(--desc);font-weight:500}
-.kpi .val{font-size:26px;font-weight:900;color:var(--blk);line-height:1.25}
-.kpi .val small{font-size:13px;color:var(--desc);font-weight:500}
-.bar{height:6px;background:#EEF0F3;border-radius:99px;overflow:hidden;margin-top:8px}
-.bar i{display:block;height:100%;background:var(--green);border-radius:99px;transition:width .3s}
+/* ── layout ── */
+.wrap{max-width:1040px;margin:0 auto;padding:34px 24px 100px}
+section{margin-bottom:58px;scroll-margin-top:60px}
+h2{font-size:11px;font-weight:700;color:var(--ink);margin:0 0 6px;letter-spacing:.18em;
+  text-transform:uppercase;display:flex;align-items:baseline;gap:12px}
+h2 .n{color:var(--ink3);font-weight:500;letter-spacing:.05em}
+.h2t{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.02em;margin:0 0 8px;line-height:1.4}
+.lede{color:var(--ink3);font-size:12.5px;margin:0 0 22px;max-width:70ch}
+.rule{height:1px;background:var(--line);margin:0 0 20px}
 
-/* ── alert ── */
-.alert{border-radius:var(--r);padding:16px 18px;margin-bottom:12px;border:1px solid;font-size:13.5px}
-.alert h3{margin:0 0 6px;font-size:15px;font-weight:900;display:flex;gap:7px;align-items:center}
-.alert.red{background:#FEF2F1;border-color:#F5C6C2;color:#7A1B14}
-.alert.red h3{color:var(--red)}
-.alert.amber{background:#FFF8ED;border-color:#F3DDB8;color:#6B4708}
-.alert.amber h3{color:var(--orange)}
-.alert.blue{background:var(--blt);border-color:#C7D6FF;color:#12307F}
-.alert.blue h3{color:var(--blue)}
-.alert p{margin:6px 0 0}
-.alert ul{margin:8px 0 0;padding-left:18px}
-.alert li{margin:3px 0}
+/* ── kpi ── */
+.grid{display:grid}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(160px,100%),1fr));border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line)}
+.kpi{padding:20px 22px 20px 0;border-right:1px solid var(--line2)}
+.kpi:last-child{border-right:none}
+.lab{font-size:10.5px;color:var(--ink3);letter-spacing:.06em;margin-bottom:5px}
+.val{font-size:30px;font-weight:700;color:var(--ink);line-height:1.15;letter-spacing:-.03em}
+.val small{font-size:13px;color:var(--ink3);font-weight:400;letter-spacing:0}
+.val.hot{color:var(--accent)}
+.bar{height:2px;background:var(--line);margin-top:12px}
+.bar i{display:block;height:100%;background:var(--ink)}
+.bar i.hot{background:var(--accent)}
+.note{font-size:11px;color:var(--ink3);margin-top:8px}
+.note.hot{color:var(--accent);font-weight:500}
+
+/* ── 핵심 판단 ── */
+.pt{display:flex;gap:22px;padding:24px 0;border-top:1px solid var(--line2)}
+.pt:first-of-type{border-top:1px solid var(--line)}
+.pt .num{flex:0 0 34px;font-size:12px;font-weight:700;color:var(--ink3);letter-spacing:.04em;padding-top:3px}
+.pt.key .num{color:var(--accent)}
+.pt .bd{flex:1;min-width:0}
+.pt h3{margin:0 0 9px;font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.015em;line-height:1.5}
+.pt p{margin:0 0 8px}
+.pt ul{margin:10px 0 0;padding-left:0;list-style:none}
+.pt li{position:relative;padding-left:14px;margin:5px 0;font-size:12.5px}
+.pt li:before{content:'';position:absolute;left:0;top:10px;width:5px;height:1px;background:var(--ink3)}
 
 /* ── toolbar ── */
-.toolbar{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:12px}
+.toolbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:20px;
+  padding-bottom:16px;border-bottom:1px solid var(--line)}
 .seg{display:flex;gap:4px;flex-wrap:wrap}
-.tg{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:12px;cursor:pointer;font-family:inherit;color:var(--body);font-weight:500;transition:.15s}
-.tg:hover{border-color:var(--blue);color:var(--blue)}
-.tg.on{background:var(--blue);border-color:var(--blue);color:#fff}
-.tg.on.p0{background:var(--red);border-color:var(--red)}
-input.search{border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:12.5px;font-family:inherit;min-width:170px;flex:1;outline:none}
-input.search:focus{border-color:var(--blue)}
+.tg{border:1px solid var(--line);background:transparent;border-radius:2px;padding:5px 11px;font-size:11.5px;
+  cursor:pointer;font-family:inherit;color:var(--ink3);font-weight:500;transition:.12s}
+.tg:hover{border-color:var(--ink3);color:var(--ink)}
+.tg.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.tg.on.p0{background:var(--accent);border-color:var(--accent)}
+input.search{border:1px solid var(--line);border-radius:2px;padding:6px 11px;font-size:11.5px;
+  font-family:inherit;min-width:160px;flex:1;outline:none;background:transparent;color:var(--ink)}
+input.search:focus{border-color:var(--ink)}
 
-/* ── item ── */
-.cat{margin-bottom:18px}
-.cathead{display:flex;align-items:center;gap:9px;margin:0 0 9px;padding-left:2px}
-.catdot{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
-.cathead h3{margin:0;font-size:15px;font-weight:900;color:var(--blk)}
-.cathead .cd{font-size:12px;color:var(--desc)}
-.cathead .cn{margin-left:auto;font-size:11.5px;color:var(--desc);font-weight:500}
+/* ── items ── */
+.cat{margin-bottom:34px}
+.cathead{display:flex;align-items:baseline;gap:10px;margin:0 0 2px;padding-bottom:9px;
+  border-bottom:1px solid var(--ink)}
+.catmark{font-size:10.5px;font-weight:700;color:var(--ink);letter-spacing:.1em}
+.cathead h3{margin:0;font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.cathead .cd{font-size:11.5px;color:var(--ink3)}
+.cathead .cn{margin-left:auto;font-size:11px;color:var(--ink3);letter-spacing:.04em}
 
-.item{border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:8px;overflow:hidden;transition:.15s}
-.item.done{opacity:.62}
-.item.done .it{text-decoration:line-through;text-decoration-color:#B9BEC7}
-.ihead{display:flex;gap:10px;padding:12px 14px;cursor:pointer;align-items:flex-start}
-.ihead:hover{background:#FAFBFC}
-.chk{width:20px;height:20px;border-radius:6px;border:2px solid #CFD4DC;flex:0 0 auto;margin-top:1px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:#fff;transition:.15s}
-.chk:hover{border-color:var(--green)}
-.chk.on{background:var(--green);border-color:var(--green)}
-.chk.on:after{content:'';width:5px;height:9px;border:solid #fff;border-width:0 2.2px 2.2px 0;transform:rotate(43deg) translate(-1px,-1px)}
-.chk.doing{background:var(--orange);border-color:var(--orange)}
-.chk.doing:after{content:'';width:8px;height:2.5px;background:#fff;border-radius:2px}
-.chk.hold{background:#9AA1AC;border-color:#9AA1AC}
-.chk.hold:after{content:'';width:8px;height:2.5px;background:#fff;border-radius:2px}
+.item{border-bottom:1px solid var(--line2);background:transparent}
+.item.done{opacity:.45}
+.item.done .it{text-decoration:line-through;text-decoration-color:var(--ink3)}
+.ihead{display:flex;gap:12px;padding:13px 2px;cursor:pointer;align-items:flex-start}
+.ihead:hover .it{color:#000}
+.chk{width:15px;height:15px;border-radius:2px;border:1px solid #C9C8C4;flex:0 0 auto;margin-top:4px;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;background:#fff;transition:.12s}
+.chk:hover{border-color:var(--ink)}
+.chk.on{background:var(--ink);border-color:var(--ink)}
+.chk.on:after{content:'';width:3.5px;height:7px;border:solid #fff;border-width:0 1.5px 1.5px 0;
+  transform:rotate(43deg) translate(-.5px,-1px)}
+.chk.doing{border-color:var(--ink)}
+.chk.doing:after{content:'';width:7px;height:7px;background:var(--ink);border-radius:1px}
+.chk.hold{border-color:#C9C8C4}
+.chk.hold:after{content:'';width:7px;height:1px;background:#C9C8C4}
 .imain{flex:1;min-width:0}
-.itop{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:3px}
-.pid{font-size:10.5px;font-weight:700;color:var(--desc);letter-spacing:.03em;font-family:ui-monospace,monospace}
-.pri{font-size:10px;font-weight:900;padding:2px 6px;border-radius:5px;letter-spacing:.02em}
-.pri.P0{background:#FDE7E5;color:var(--red)}
-.pri.P1{background:#FFF3E0;color:var(--orange)}
-.pri.P2{background:#EEF1F5;color:#5B6472}
-.due{font-size:11px;color:var(--desc);font-weight:500;margin-left:auto;white-space:nowrap}
-.due.soon{color:var(--red);font-weight:700}
-.due.near{color:var(--orange);font-weight:700}
-.it{font-size:14px;font-weight:700;color:var(--blk);line-height:1.5}
-.owner-mini{font-size:11px;color:var(--blue);font-weight:500}
-.caret{color:#C3C8D0;font-size:11px;margin-top:4px;transition:.2s;flex:0 0 auto}
+.itop{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;margin-bottom:1px}
+.pid{font-size:10.5px;font-weight:500;color:var(--ink3);letter-spacing:.06em;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.pri{font-size:10px;font-weight:700;letter-spacing:.06em;color:#B5B4B0}
+.pri.P0{color:var(--ink)}
+.due{font-size:11px;color:var(--ink3);margin-left:auto;white-space:nowrap;letter-spacing:.01em}
+.due.near{color:var(--ink);font-weight:700}
+.due.soon{color:var(--accent);font-weight:700}
+.it{font-size:14px;font-weight:500;color:var(--ink);line-height:1.55;letter-spacing:-.008em}
+.owner-mini{font-size:10.5px;color:var(--ink3)}
+.caret{color:#C9C8C4;font-size:9px;margin-top:6px;flex:0 0 auto;transition:.2s}
 .item.open .caret{transform:rotate(90deg)}
-.ibody{display:none;padding:0 14px 14px 44px;border-top:1px solid #F1F3F6}
+.ibody{display:none;padding:2px 2px 20px 27px}
 .item.open .ibody{display:block}
-.why{background:#FAFBFC;border-left:3px solid var(--blue);border-radius:0 8px 8px 0;padding:10px 13px;margin:12px 0 10px;font-size:13px;line-height:1.7}
-.why .wl{font-size:10.5px;font-weight:900;color:var(--blue);letter-spacing:.05em;display:block;margin-bottom:3px}
-.out{font-size:12px;color:var(--desc);margin-bottom:10px}
-.out b{color:var(--body);font-weight:500}
-.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
-.fld label{display:block;font-size:10.5px;color:var(--desc);font-weight:700;margin-bottom:3px;letter-spacing:.03em}
-.fld select,.fld input,.fld textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:12.5px;font-family:inherit;color:var(--body);outline:none;background:#fff}
-.fld select:focus,.fld input:focus,.fld textarea:focus{border-color:var(--blue)}
-.fld textarea{resize:vertical;min-height:38px}
+.why{border-left:1px solid var(--line);padding:2px 0 2px 15px;margin:4px 0 14px;
+  font-size:12.5px;line-height:1.8;color:var(--ink2)}
+.why .wl{font-size:9.5px;font-weight:700;color:var(--ink3);letter-spacing:.16em;
+  display:block;margin-bottom:6px;text-transform:uppercase}
+.out{font-size:11.5px;color:var(--ink3);margin-bottom:14px}
+.out b{color:var(--ink2);font-weight:500}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.fld label{display:block;font-size:9.5px;color:var(--ink3);font-weight:700;margin-bottom:4px;
+  letter-spacing:.14em;text-transform:uppercase}
+.fld select,.fld input,.fld textarea{width:100%;border:none;border-bottom:1px solid var(--line);
+  border-radius:0;padding:5px 2px;font-size:12.5px;font-family:inherit;color:var(--ink);
+  outline:none;background:transparent}
+.fld select:focus,.fld input:focus,.fld textarea:focus{border-bottom-color:var(--ink)}
+.fld textarea{resize:vertical;min-height:32px;line-height:1.7}
 .fld.wide{grid-column:1/-1}
-.saved{font-size:10.5px;color:var(--green);font-weight:500;margin-top:6px;min-height:14px}
+.saved{font-size:10px;color:var(--ink3);margin-top:10px;min-height:13px;letter-spacing:.02em}
 
 /* ── table ── */
-.tbl{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff}
-.tbl th{background:#F7F8FA;text-align:left;padding:9px 11px;font-weight:700;color:var(--blk);border-bottom:1px solid var(--line);font-size:11.5px;white-space:nowrap}
-.tbl td{padding:10px 11px;border-bottom:1px solid #F1F3F6;vertical-align:top;line-height:1.6}
+.scroll{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px;background:transparent}
+.tbl th{text-align:left;padding:0 16px 9px 0;font-weight:700;color:var(--ink3);
+  border-bottom:1px solid var(--ink);font-size:9.5px;white-space:nowrap;letter-spacing:.14em;text-transform:uppercase}
+.tbl td{padding:13px 16px 13px 0;border-bottom:1px solid var(--line2);vertical-align:top;line-height:1.75}
+.tbl td:last-child,.tbl th:last-child{padding-right:0}
 .tbl tr:last-child td{border-bottom:none}
-.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
+.tbl .lnk{color:var(--ink3);font-size:11px;white-space:nowrap;letter-spacing:.03em;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.tbl .did{font-weight:700;color:var(--ink);letter-spacing:.04em}
+
+/* ── store cards ── */
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:0}
+.store{padding:22px 26px 22px 0;border-top:1px solid var(--ink);border-right:1px solid var(--line2)}
+.store:last-child{border-right:none}
+.store .plat{font-size:9.5px;font-weight:700;letter-spacing:.16em;color:var(--ink3);
+  margin-bottom:12px;text-transform:uppercase}
+.store dl{margin:0;font-size:12.5px}
+.store dt{font-size:10px;font-weight:700;color:var(--ink3);letter-spacing:.1em;margin-top:12px;text-transform:uppercase}
+.store dt:first-child{margin-top:0}
+.store dd{margin:3px 0 0;line-height:1.72}
 
 /* ── timeline ── */
-.tl{position:relative;padding-left:26px}
-.tl:before{content:'';position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,#DDE3ED,#0041FF)}
-.tli{position:relative;margin-bottom:11px}
-.tli:before{content:'';position:absolute;left:-24px;top:6px;width:10px;height:10px;border-radius:50%;background:#fff;border:2.5px solid #C9D2E3}
-.tli.major:before{border-color:var(--blue);background:var(--blue)}
-.tli.gate:before{border-color:var(--orange);background:var(--orange)}
-.tli.launch:before{border-color:var(--red);background:var(--red);width:14px;height:14px;left:-26px;top:4px}
-.tli.today:before{border-color:var(--green);background:var(--green)}
-.tlc{background:#fff;border:1px solid var(--line);border-radius:11px;padding:10px 13px;box-shadow:var(--sh)}
-.tli.launch .tlc{border-color:#F5C6C2;background:#FEF7F6}
-.tli.major .tlc{border-color:#C7D6FF}
-.tli.today .tlc{border-color:#BFE8D6;background:#F4FBF8}
-.tld{font-size:11px;color:var(--desc);font-weight:700;letter-spacing:.02em}
-.tld .dd{color:var(--blue);margin-left:6px}
-.tlt{font-size:13.5px;font-weight:700;color:var(--blk);margin:1px 0 2px}
-.tls{font-size:12px;color:var(--desc)}
+.tl{position:relative;padding-left:22px;margin-top:4px}
+.tl:before{content:'';position:absolute;left:3px;top:8px;bottom:8px;width:1px;background:var(--line)}
+.tli{position:relative;padding:11px 0;border-bottom:1px solid var(--line2)}
+.tli:last-child{border-bottom:none}
+.tli.past{opacity:.42}
+.tli:before{content:'';position:absolute;left:-22px;top:18px;width:7px;height:7px;border-radius:50%;
+  background:var(--paper);border:1px solid #C9C8C4}
+.tli.major:before{background:var(--ink);border-color:var(--ink)}
+.tli.gate:before{background:var(--paper);border:1.5px solid var(--ink)}
+.tli.today:before{background:var(--paper);border:1.5px solid var(--ink);
+  box-shadow:0 0 0 3px var(--paper),0 0 0 4px var(--line)}
+.tli.launch:before{background:var(--accent);border-color:var(--accent)}
+.tld{font-size:10.5px;color:var(--ink3);letter-spacing:.05em;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.tld .dd{margin-left:8px;color:var(--ink2)}
+.tli.launch .tld,.tli.launch .dd{color:var(--accent)}
+.tli.today .dd{color:var(--ink);font-weight:700}
+.tlt{font-size:13.5px;font-weight:700;color:var(--ink);margin:2px 0 1px;letter-spacing:-.01em}
+.tli.launch .tlt{color:var(--accent)}
+.tls{font-size:12px;color:var(--ink3)}
 
 /* ── risk ── */
-.risk{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:#fff;margin-bottom:8px}
-.risk .rh{display:flex;gap:8px;align-items:center;margin-bottom:5px;flex-wrap:wrap}
-.lv{font-size:10px;font-weight:900;padding:2px 8px;border-radius:5px}
-.lv.상{background:#FDE7E5;color:var(--red)}
-.lv.중{background:#FFF3E0;color:var(--orange)}
-.lv.하{background:#EEF1F5;color:#5B6472}
-.risk .rt{font-size:13.5px;font-weight:700;color:var(--blk)}
-.risk .rd{font-size:12.5px;margin-bottom:6px}
-.risk .rm{font-size:12.5px;background:#F4FBF8;border-radius:8px;padding:8px 11px;color:#0B5C40}
-.risk .rm b{color:#064A33}
+.risk{padding:18px 0;border-bottom:1px solid var(--line2)}
+.risk:first-child{border-top:1px solid var(--ink)}
+.risk:last-child{border-bottom:none}
+.rh{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:5px}
+.lv{font-size:9.5px;font-weight:700;letter-spacing:.12em;color:var(--ink3)}
+.lv.상{color:var(--accent)}
+.rt{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.rd{font-size:12.5px;margin-bottom:8px}
+.rm{font-size:12.5px;color:var(--ink2);border-left:1px solid var(--line);padding-left:14px}
+.rm b{font-size:9.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase;
+  display:block;margin-bottom:2px;font-weight:700}
 
-/* ── fb status ── */
-.fbbar{position:fixed;right:12px;bottom:12px;z-index:80;display:flex;gap:6px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px;box-shadow:0 4px 20px rgba(0,0,0,.12);font-size:11.5px;color:var(--desc)}
-.dot{width:7px;height:7px;border-radius:50%;background:#C9CED6;flex:0 0 auto}
-.dot.ok{background:var(--green);box-shadow:0 0 0 3px rgba(0,168,107,.15)}
-.dot.err{background:var(--red)}
-.dot.local{background:var(--orange)}
-footer{border-top:1px solid var(--line);margin-top:30px;padding-top:16px;font-size:11.5px;color:var(--desc)}
-@media(max-width:520px){
-  .ibody{padding-left:14px}
+/* ── status ── */
+.fbbar{position:fixed;right:16px;bottom:16px;z-index:80;display:flex;gap:7px;align-items:center;
+  background:var(--card);border:1px solid var(--line);border-radius:2px;padding:6px 12px;
+  font-size:10.5px;color:var(--ink3);letter-spacing:.02em}
+.dot{width:5px;height:5px;border-radius:50%;background:#C9C8C4;flex:0 0 auto}
+.dot.ok{background:var(--ink)}
+.dot.err,.dot.local{background:var(--accent)}
+
+footer{border-top:1px solid var(--line);margin-top:36px;padding-top:18px;
+  font-size:11px;color:var(--ink3);line-height:1.85}
+footer b{color:var(--ink2);font-weight:700}
+
+@media(max-width:640px){
+  .kpi:nth-child(even){border-right:none}
+  header{padding:32px 18px 0}
+  .wrap{padding:26px 18px 80px}
+  .nv{padding:0 18px}
+  .dchip{padding-right:18px;margin-right:18px;min-width:80px}
+  .kpi{padding-right:16px}
   .due{margin-left:0;width:100%}
+  .ibody{padding-left:2px}
+  .store{padding-right:0;border-right:none}
 }
 @media print{
   nav,.fbbar,.toolbar{display:none}
   .item .ibody{display:block!important}
   body{background:#fff}
 }
+
 </style>
 </head>
 <body>
 <header><div class="hw">
-  <div class="eyebrow">ABOUTFISHING · LAUNCH TRANSITION BRIEF</div>
+  <div class="eyebrow">Aboutfishing · Launch Transition Brief</div>
   <h1>8월 통합 서비스 → 9월 9일 론칭 전환 준비서</h1>
-  <div class="sub">8/10 앱내공지 게시 · 9/9 정식 론칭 기준 · 준비항목 <b id="cnt">–</b>건 / 미결 의사결정 10건 / 리스크 10건</div>
+  <div class="sub">8/10 앱내공지 게시 · 9/9 정식 론칭 기준 &nbsp;|&nbsp; 준비항목 <b id="cnt">–</b>건 · 미결 의사결정 10건 · 리스크 10건</div>
   <div class="dchips" id="dchips"></div>
 </div></header>
 
 <nav><div class="nv">
-  <a href="#s0">요약</a><a href="#s1">핵심 판단 3</a><a href="#s2">날짜 의존성</a>
+  <a href="#s0">요약</a><a href="#s1">핵심 판단</a><a href="#s2">날짜 의존성</a>
   <a href="#s3">준비항목</a><a href="#s4">역산 일정</a><a href="#s5">의사결정</a>
   <a href="#s6">리스크</a><a href="#s7">근거</a>
 </div></nav>
@@ -207,60 +267,72 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding-top:16px;font-si
 <div class="wrap">
 
 <section id="s0">
-  <h2><span class="n">0</span>한눈에 보기</h2>
-  <p class="lede">체크 상태·담당자·메모는 입력 즉시 Firebase RTDB에 저장되어 다른 사람의 화면에도 반영됩니다.</p>
+  <h2><span class="n">00</span>한눈에 보기</h2>
+  <p class="lede">체크 상태·담당자·메모는 입력 즉시 저장되어 다른 사람의 화면에도 반영됩니다.</p>
   <div class="grid g4" id="kpis"></div>
 </section>
 
 <section id="s1">
-  <h2><span class="n">1</span>먼저 결론 — 지금 놓치면 되돌릴 수 없는 3가지</h2>
+  <h2><span class="n">01</span>핵심 판단</h2>
+  <div class="h2t">지금 놓치면 되돌릴 수 없는 세 가지</div>
   <p class="lede">나머지 항목은 순서를 바꿔도 되지만, 이 셋은 특정 날짜를 지나면 선택지가 사라집니다.</p>
 
-  <div class="alert red">
-    <h3>① 8/10은 공지 게시일이 아니라 <u>약관 재공고의 법정 마감일</u>입니다</h3>
-    <p>약관·개인정보 처리방침 11차는 현재 <b>공고 2026-07-19 / 시행 2026-08-19</b>로 3문서가 확정돼 있습니다. 론칭이 9/9로 밀렸는데 시행일을 그대로 두면, <b>8/19~9/8 3주 동안 신약관은 시행됐지만 그 약관이 전제하는 화면(D-3 취소요청 접수·머니 환불 신청)이 앱에 없는 상태</b>가 됩니다.</p>
-    <p>시행일을 9/9로 옮기려면 이용자 불리 변경의 <b>30일 사전 고지</b>를 다시 채워야 하고, 9/9에서 30일을 역산하면 정확히 <b>2026-08-10</b>입니다. 즉 <b>안전 마진이 하루도 없습니다.</b></p>
-    <ul>
-      <li>권고: 공고를 <b>8/7(금)~8/8(토)</b>로 앞당기거나, 시행일을 <b>9/10 이후</b>로 하루 미뤄 여유를 만들 것 (초일 산입 여부는 법무 확인 필수)</li>
-      <li>동시에 <b>CPO 성명 공란</b>은 여전히 “시행 자체가 불가”한 정지조건 — 8/7까지 확정 필요</li>
-    </ul>
+  <div class="pt key">
+    <div class="num">01</div>
+    <div class="bd">
+      <h3>8/10은 공지 게시일이 아니라 <u>약관 재공고의 법정 마감일</u>입니다</h3>
+      <p>약관·개인정보 처리방침 11차는 현재 <b>공고 2026-07-19 / 시행 2026-08-19</b>로 3문서가 확정돼 있습니다. 론칭이 9/9로 밀렸는데 시행일을 그대로 두면, <b>8/19~9/8 3주 동안 신약관은 시행됐지만 그 약관이 전제하는 화면(D-3 취소요청 접수·머니 환불 신청)이 앱에 없는 상태</b>가 됩니다.</p>
+      <p>시행일을 9/9로 옮기려면 이용자 불리 변경의 <b>30일 사전 고지</b>를 다시 채워야 하고, 9/9에서 30일을 역산하면 정확히 <b>2026-08-10</b>입니다. 즉 <b class="acc">안전 마진이 하루도 없습니다.</b></p>
+      <ul>
+        <li>권고 — 공고를 <b>8/7(금)~8/8(토)</b>로 앞당기거나, 시행일을 <b>9/10 이후</b>로 하루 미뤄 여유를 만들 것 (초일 산입 여부는 법무 확인 필수)</li>
+        <li>동시에 <b>CPO 성명 공란</b>은 여전히 “시행 자체가 불가”한 정지조건 — 8/7까지 확정 필요</li>
+      </ul>
+    </div>
   </div>
 
-  <div class="alert amber">
-    <h3>② 딥링크는 “원링크를 고치는 문제”가 아니라 <u>앱 빌드에 물린 문제</u>입니다</h3>
-    <p>고객앱은 <b>전체 웹뷰 + 앱패킹(네이티브 화면 없음)</b> 구조라 <b>웹 URL이 곧 딥링크</b>입니다. 따라서 통합에서 라우트가 바뀌면 기존 원링크가 통째로 무효가 됩니다. 게다가:</p>
-    <ul>
-      <li>AppsFlyer OneLink는 <b>앱이 이미 아는 키·값이면 대시보드 수정만으로 충분</b>하지만, <b>새 키를 도입하면 앱 코드 수정 = 재배포</b>가 필요합니다 → 9/9 빌드에 반드시 포함돼야 하고, 그러면 마감이 <b>Feature Freeze 8/19</b>로 당겨집니다.</li>
-      <li>iOS AASA는 <b>이미 설치된 기기가 주 1회만 갱신본을 확인</b> → 반영에 최대 7일. <b>9/1까지</b> 올라가 있어야 합니다.</li>
-      <li>Android 14 이하는 App Links 주기 재검증이 <b>없어서</b>, 경로가 바뀌면 <b>앱 업데이트를 받기 전까지 딥링크가 깨진 채로 남습니다.</b></li>
-      <li>부수 확인: Firebase Dynamic Links는 <b>2025-08-25 완전 종료</b>되어 남아 있으면 404입니다. 원링크의 <b>pid·c 파라미터 미부착</b>은 7/28부터 사흘 연속 P0로 올라온 미해결 건으로, 이대로면 <b>론칭 유입 전량이 오가닉으로 집계</b>됩니다.</li>
-    </ul>
+  <div class="pt">
+    <div class="num">02</div>
+    <div class="bd">
+      <h3>딥링크는 “원링크를 고치는 문제”가 아니라 <u>앱 빌드에 물린 문제</u>입니다</h3>
+      <p>고객앱은 <b>전체 웹뷰 + 앱패킹(네이티브 화면 없음)</b> 구조라 <b>웹 URL이 곧 딥링크</b>입니다. 따라서 통합에서 라우트가 바뀌면 기존 원링크가 통째로 무효가 됩니다.</p>
+      <ul>
+        <li>AppsFlyer OneLink는 <b>앱이 이미 아는 키·값이면 대시보드 수정만으로 충분</b>하지만, <b>새 키를 도입하면 앱 코드 수정 = 재배포</b>가 필요합니다 → 9/9 빌드에 반드시 포함돼야 하고, 그러면 마감이 <b>Feature Freeze 8/19</b>로 당겨집니다</li>
+        <li>iOS AASA는 <b>이미 설치된 기기가 주 1회만 갱신본을 확인</b> → 반영에 최대 7일. <b>9/1까지</b> 올라가 있어야 합니다</li>
+        <li>Android 14 이하는 App Links 주기 재검증이 <b>없어서</b>, 경로가 바뀌면 <b class="acc">앱 업데이트를 받기 전까지 딥링크가 깨진 채로 남습니다</b></li>
+        <li>부수 확인 — Firebase Dynamic Links는 <b>2025-08-25 완전 종료</b>되어 남아 있으면 404. 원링크의 <b>pid·c 파라미터 미부착</b>은 7/28부터 사흘 연속 P0로 올라온 미해결 건으로, 이대로면 론칭 유입 전량이 오가닉으로 집계됩니다</li>
+      </ul>
+    </div>
   </div>
 
-  <div class="alert blue">
-    <h3>③ SEO는 9/9에 켜면 <u>이미 늦습니다</u> — 지금 켤 수 있는 것부터 분리하세요</h3>
-    <p>구글 공식 기준으로 중소 규모 사이트도 색인 이전에 <b>수 주</b>가 걸립니다. 9~10월이 피크인데 9/9에 한꺼번에 켜면 <b>피크의 검색 유입을 통째로 포기</b>하는 셈입니다. 지금 <b>URL 구조를 바꾸지 않고도</b> 선반영 가능한 항목이 있습니다.</p>
-    <ul>
-      <li>robots.txt의 <code>Disallow: /_next/static/chunks/</code> 제거 — 렌더 JS를 스스로 차단 중</li>
-      <li><code>sitemap.xml</code> 정상화 — aboutfishing.kr은 404, booking은 파싱 실패 상태</li>
-      <li>기존 <code>/boats/*</code>에 title·description·JSON-LD 주입 — 현재 head 태그 5개뿐, 전 도메인 JSON-LD 0건(경쟁사 포함 전원 0건 = 선점 여지)</li>
-      <li>단, <b>날짜를 고르기 전엔 상품 링크가 0개로 렌더되는 문제</b>는 구조 변경이라 Feature Freeze(8/19) 안에 넣어야 합니다 — 설계서가 지목한 단일 최대 병목</li>
-    </ul>
+  <div class="pt">
+    <div class="num">03</div>
+    <div class="bd">
+      <h3>SEO는 9/9에 켜면 <u>이미 늦습니다</u> — 지금 켤 수 있는 것부터 분리하세요</h3>
+      <p>구글 공식 기준으로 중소 규모 사이트도 색인 이전에 <b>수 주</b>가 걸립니다. 9~10월이 피크인데 9/9에 한꺼번에 켜면 <b>피크의 검색 유입을 통째로 포기</b>하는 셈입니다. 지금 <b>URL 구조를 바꾸지 않고도</b> 선반영 가능한 항목이 있습니다.</p>
+      <ul>
+        <li>robots.txt의 <code>Disallow: /_next/static/chunks/</code> 제거 — 렌더 JS를 스스로 차단 중</li>
+        <li><code>sitemap.xml</code> 정상화 — aboutfishing.kr은 404, booking은 파싱 실패 상태</li>
+        <li>기존 <code>/boats/*</code>에 title·description·JSON-LD 주입 — 현재 head 태그 5개뿐, 전 도메인 JSON-LD 0건(경쟁사 포함 전원 0건 = 선점 여지)</li>
+        <li>단, <b>날짜를 고르기 전엔 상품 링크가 0개로 렌더되는 문제</b>는 구조 변경이라 Feature Freeze(8/19) 안에 넣어야 합니다 — 설계서가 지목한 단일 최대 병목</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <section id="s2">
-  <h2><span class="n">2</span>8월 기준으로 박혀 있는 날짜 — 전수 점검표</h2>
-  <p class="lede">연기하면 자동으로 어긋나는 것들입니다. “고칠 곳”이 아니라 “안 고치면 사고 나는 곳” 목록으로 읽어주세요.</p>
+  <h2><span class="n">02</span>날짜 의존성</h2>
+  <div class="h2t">8월 기준으로 박혀 있는 것들</div>
+  <p class="lede">연기하면 자동으로 어긋납니다. “고칠 곳”이 아니라 “안 고치면 사고 나는 곳” 목록으로 읽어주세요.</p>
   <div class="scroll"><table class="tbl">
-    <thead><tr><th>대상</th><th>현재 박혀 있는 날짜</th><th>9/9 연기 시 무슨 일이 생기나</th><th>연결 항목</th></tr></thead>
+    <thead><tr><th>대상</th><th>박혀 있는 날짜</th><th>9/9 연기 시 무슨 일이 생기나</th><th>연결</th></tr></thead>
     <tbody id="dep"></tbody>
   </table></div>
 </section>
 
 <section id="s3">
-  <h2><span class="n">3</span>준비 필요 항목 — 사유 포함</h2>
-  <p class="lede">항목을 누르면 <b>왜 필요한지</b>와 산출물이 펼쳐집니다. 상태·담당자·메모는 자동 저장됩니다.</p>
+  <h2><span class="n">03</span>준비 필요 항목</h2>
+  <div class="h2t">사유를 포함한 실행 목록</div>
+  <p class="lede">항목을 누르면 왜 필요한지와 산출물이 펼쳐집니다. 상태·담당자·메모는 자동 저장됩니다.</p>
   <div class="toolbar">
     <div class="seg" id="fcat"></div>
     <div class="seg" id="fpri"></div>
@@ -272,38 +344,43 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding-top:16px;font-si
 </section>
 
 <section id="s4">
-  <h2><span class="n">4</span>9/9 역산 일정 — 언제 빌드하고 언제 심사에 올리나</h2>
-  <p class="lede">전제: <b>기존 앱의 업데이트</b>(신규 앱 등록이 아님). 이 전제가 깨지면 <span style="color:var(--red);font-weight:700">일정표 전체를 다시 짜야 합니다</span> — 항목 E-01·E-02를 먼저 확정하세요.</p>
+  <h2><span class="n">04</span>역산 일정</h2>
+  <div class="h2t">언제 빌드하고 언제 심사에 올리나</div>
+  <p class="lede">전제 — <b>기존 앱의 업데이트</b>(신규 앱 등록이 아님). 이 전제가 깨지면 일정표 전체를 다시 짜야 합니다. 항목 E-01·E-02를 먼저 확정하세요.</p>
 
-  <div class="grid g2" style="margin-bottom:14px">
-    <div class="card" style="padding:14px 16px">
-      <div style="font-size:11px;font-weight:900;color:var(--blue);letter-spacing:.05em;margin-bottom:6px">APP STORE (iOS)</div>
-      <table class="tbl" style="font-size:12px"><tbody>
-        <tr><td style="white-space:nowrap"><b>9/1(화)</b></td><td>심사 제출 + <b>“Automatically release after App Review, no earlier than 2026-09-09”</b> 설정</td></tr>
-        <tr><td><b>근거</b></td><td>Apple 공식 “90%가 24시간 내 심사”. 다만 <b>9월은 iOS 신버전 시즌 적체</b> 지적이 반복 → <b>리젝 1사이클(2~3일) 버퍼 내장</b></td></tr>
-        <tr><td><b>주의</b></td><td>릴리즈 예약은 <b>플랫폼별</b> 적용. 웹뷰 앱은 심사지침 <b>4.2 Minimum Functionality</b> 리스크가 있어 앱다운 기능을 심사 노트에 명시</td></tr>
-      </tbody></table>
+  <div class="grid g2" style="margin-bottom:34px">
+    <div class="store">
+      <div class="plat">App Store · iOS</div>
+      <dl>
+        <dt>제출</dt><dd><b>9/1(화)</b> — 심사 제출 + <b>“Automatically release after App Review, no earlier than 2026-09-09”</b> 설정</dd>
+        <dt>근거</dt><dd>Apple 공식 “90%가 24시간 내 심사”. 다만 <b>9월은 iOS 신버전 시즌 적체</b> 지적이 반복 → 리젝 1사이클(2~3일) 버퍼 내장</dd>
+        <dt>주의</dt><dd>릴리즈 예약은 <b>플랫폼별</b> 적용. 웹뷰 앱은 심사지침 <b>4.2 Minimum Functionality</b> 리스크가 있어 앱다운 기능을 심사 노트에 명시</dd>
+      </dl>
     </div>
-    <div class="card" style="padding:14px 16px">
-      <div style="font-size:11px;font-weight:900;color:var(--green);letter-spacing:.05em;margin-bottom:6px">GOOGLE PLAY (Android)</div>
-      <table class="tbl" style="font-size:12px"><tbody>
-        <tr><td style="white-space:nowrap"><b>8/31(월)</b></td><td>프로덕션 심사 제출 + <b>관리형 게시(Managed Publishing) ON</b> → 9/9 수동 “Publish changes”</td></tr>
-        <tr><td><b>근거</b></td><td>공식 “심사 <b>최대 7일 이상</b>”, 구글이 <b>제출~게시 사이 최소 1주 버퍼</b>를 권고</td></tr>
-        <tr><td><b>주의</b></td><td><b>가격·출시 노트·기기 제외 규칙·인앱 상품은 관리형 게시를 우회</b>해 즉시 반영. 단계적 출시는 <b>업데이트에만</b> 가능하고 비율이 자동 증가하지 않음</td></tr>
-      </tbody></table>
+    <div class="store">
+      <div class="plat">Google Play · Android</div>
+      <dl>
+        <dt>제출</dt><dd><b>8/31(월)</b> — 프로덕션 심사 제출 + <b>관리형 게시(Managed Publishing) ON</b> → 9/9 수동 “Publish changes”</dd>
+        <dt>근거</dt><dd>공식 “심사 <b>최대 7일 이상</b>”, 구글이 <b>제출~게시 사이 최소 1주 버퍼</b>를 권고</dd>
+        <dt>주의</dt><dd><b>가격·출시 노트·기기 제외 규칙·인앱 상품은 관리형 게시를 우회</b>해 즉시 반영. 단계적 출시는 <b>업데이트에만</b> 가능하고 비율이 자동 증가하지 않음</dd>
+      </dl>
     </div>
   </div>
 
   <div class="tl" id="tl"></div>
 
-  <div class="alert blue" style="margin-top:14px">
-    <h3>일정상 안전판 — 웹뷰 구조가 유리하게 작동합니다</h3>
-    <p>실질 릴리즈는 <b>웹 배포</b>이고 앱 바이너리는 최소버전 플래그·딥링크 핸들러·권한·브릿지 정도만 담습니다. 따라서 D-1에 한쪽 스토어가 미승인이어도 <b>웹만 먼저 열고 앱은 승인 즉시 게시</b>하는 컨틴전시가 가능합니다. 같은 이유로 <b>롤백도 웹 롤백이 1순위</b>여야 합니다 — 단계적 출시는 중단해도 이미 설치한 사용자는 그 버전에 남기 때문입니다.</p>
+  <div class="pt" style="border-top:1px solid var(--line);margin-top:24px">
+    <div class="num">✦</div>
+    <div class="bd">
+      <h3>일정상 안전판 — 웹뷰 구조가 유리하게 작동합니다</h3>
+      <p>실질 릴리즈는 <b>웹 배포</b>이고 앱 바이너리는 최소버전 플래그·딥링크 핸들러·권한·브릿지 정도만 담습니다. 따라서 D-1에 한쪽 스토어가 미승인이어도 <b>웹만 먼저 열고 앱은 승인 즉시 게시</b>하는 컨틴전시가 가능합니다. 같은 이유로 <b>롤백도 웹 롤백이 1순위</b>여야 합니다 — 단계적 출시는 중단해도 이미 설치한 사용자는 그 버전에 남기 때문입니다.</p>
+    </div>
   </div>
 </section>
 
 <section id="s5">
-  <h2><span class="n">5</span>미결 의사결정 — 누가, 언제까지</h2>
+  <h2><span class="n">05</span>미결 의사결정</h2>
+  <div class="h2t">누가, 언제까지</div>
   <p class="lede">아래가 정해지지 않으면 그 아래 실무가 전부 멈춥니다.</p>
   <div class="scroll"><table class="tbl">
     <thead><tr><th>ID</th><th>결정 사항</th><th>선택지</th><th>정하지 않으면</th><th>기한 / 주체</th></tr></thead>
@@ -312,14 +389,16 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding-top:16px;font-si
 </section>
 
 <section id="s6">
-  <h2><span class="n">6</span>리스크 레지스터</h2>
-  <p class="lede">연기 자체가 만들어낸 리스크와, 연기로 더 커진 기존 리스크를 함께 담았습니다.</p>
+  <h2><span class="n">06</span>리스크</h2>
+  <div class="h2t">연기가 만든 것과, 연기로 커진 것</div>
+  <p class="lede"></p>
   <div id="risk"></div>
 </section>
 
 <section id="s7">
-  <h2><span class="n">7</span>근거 자료</h2>
-  <p class="lede">이 문서의 모든 수치·인용은 아래 자료에서 실제로 확인된 것만 사용했습니다. 추정한 부분은 본문에 그렇게 표기했습니다.</p>
+  <h2><span class="n">07</span>근거 자료</h2>
+  <div class="h2t">이 문서가 인용한 것</div>
+  <p class="lede">모든 수치·인용은 아래 자료에서 실제로 확인된 것만 사용했습니다. 추정한 부분은 본문에 그렇게 표기했습니다.</p>
   <div class="scroll"><table class="tbl">
     <thead><tr><th>자료</th><th>이 문서에서 인용한 내용</th></tr></thead>
     <tbody id="src"></tbody>
@@ -687,20 +766,20 @@ const TIMELINE = [
  {d:'2026-08-05', w:'수', k:'gate',  t:'릴리즈 형태 확정 (D5)', s:'원링크 pid·c 부착(C-01) · GA 기준일 갱신(G-01)'},
  {d:'2026-08-07', w:'금', k:'gate',  t:'★ 약관 시행일 결정 (D1) · CPO 성명 확정 (D4)', s:'공지 개정 확정안 · 원링크 인벤토리'},
  {d:'2026-08-08', w:'토', k:'',      t:'재공고 실행 (시행일 이동 시)', s:'30일 역산 안전판 — 8/10보다 앞당김'},
- {d:'2026-08-10', w:'월', k:'major', t:'앱내공지 게시 (D-30)', s:'재공고 법정 마감일 · CS 스크립트 동시 배포'},
+ {d:'2026-08-10', w:'월', k:'major', t:'앱내공지 게시 (론칭 D-30)', s:'재공고 법정 마감일 · CS 스크립트 동시 배포'},
  {d:'2026-08-12', w:'수', k:'',      t:'딥링크 스키마·SEO 선반영 착수', s:'dev 갭 P0 처리 계획 · 손절 게이트 재설정'},
  {d:'2026-08-18', w:'화', k:'gate',  t:'쿠폰 실험 판정', s:'9월 본 캠페인(상한 2,500만) 결정'},
- {d:'2026-08-19', w:'수', k:'major', t:'Feature Freeze (D-21)', s:'GA4 태깅·버킷 분리 반영 마감 · 상품 링크 크롤 가능화'},
+ {d:'2026-08-19', w:'수', k:'major', t:'Feature Freeze (론칭 D-21)', s:'GA4 태깅·버킷 분리 반영 마감 · 상품 링크 크롤 가능화'},
  {d:'2026-08-21', w:'금', k:'',      t:'Netlify 크레딧 복구', s:'배포 재개 가능'},
- {d:'2026-08-26', w:'수', k:'major', t:'코드 프리즈 + prod RC 빌드 (D-14)', s:'이후 버그 수정만'},
+ {d:'2026-08-26', w:'수', k:'major', t:'코드 프리즈 + prod RC 빌드 (론칭 D-14)', s:'이후 버그 수정만'},
  {d:'2026-08-27', w:'목', k:'',      t:'내부 배포 (TestFlight / Play 내부테스트)', s:'통합 QA 시작'},
  {d:'2026-08-28', w:'금', k:'',      t:'원스토어 제출 (포함 시)', s:'소요 미공개 — 사전 문의 필수'},
- {d:'2026-08-31', w:'월', k:'major', t:'Google Play 프로덕션 심사 제출 (D-9)', s:'공식 최대 7일 이상 · 권고 버퍼 1주'},
- {d:'2026-09-01', w:'화', k:'major', t:'App Store 심사 제출 + 릴리즈 예약 (D-8)', s:'“no earlier than 9/9” · AASA/assetlinks 선반영 마감'},
- {d:'2026-09-02', w:'수', k:'',      t:'QA 종료 · 롤백 계획 확정 (D-7)', s:'딥링크 반영 대기 구간 시작'},
+ {d:'2026-08-31', w:'월', k:'major', t:'Google Play 프로덕션 심사 제출 (론칭 D-9)', s:'공식 최대 7일 이상 · 권고 버퍼 1주'},
+ {d:'2026-09-01', w:'화', k:'major', t:'App Store 심사 제출 + 릴리즈 예약 (론칭 D-8)', s:'“no earlier than 9/9” · AASA/assetlinks 선반영 마감'},
+ {d:'2026-09-02', w:'수', k:'',      t:'QA 종료 · 롤백 계획 확정 (론칭 D-7)', s:'딥링크 반영 대기 구간 시작'},
  {d:'2026-09-03', w:'목', k:'',      t:'Play 관리형 게시 설정 확인', s:'9/9 수동 게시 리허설'},
  {d:'2026-09-05', w:'토', k:'',      t:'링크 회귀 테스트 실행', s:'설치/미설치 × OS × 채널'},
- {d:'2026-09-08', w:'화', k:'gate',  t:'양 스토어 승인 확인 (D-1)', s:'미승인 시 컨틴전시 발동'},
+ {d:'2026-09-08', w:'화', k:'gate',  t:'양 스토어 승인 확인 (론칭 D-1)', s:'미승인 시 컨틴전시 발동'},
  {d:'2026-09-09', w:'수', k:'launch',t:'🚀 론칭 — 웹 배포 + 앱 게시', s:'사이트맵 재제출 · D0 모니터링 체계 가동'}
 ];
 
@@ -772,8 +851,8 @@ try{
     const patch = {};
     patch['edits/' + PFX + id] = { value: JSON.stringify(obj), by: (obj.o || 'anon'), at: Date.now() };
     update(baseRef, patch)
-      .then(()=> stat('ok','RTDB 저장됨 · ' + new Date().toLocaleTimeString('ko-KR')))
-      .catch(e=>{ stat('local','RTDB 쓰기 거부 — 이 브라우저에만 저장 (' + (e.code||e.message) + ')'); });
+      .then(()=> stat('ok','저장됨 · ' + new Date().toLocaleTimeString('ko-KR')))
+      .catch(e=>{ stat('local','쓰기 거부 — 이 브라우저에만 저장 (' + (e.code||e.message) + ')'); });
   };
 
   signInAnonymously(auth).catch(e=> stat('err','익명 인증 실패 — 로컬 저장으로 동작 (' + (e.code||'') + ')'));
@@ -788,9 +867,9 @@ try{
         try{ window.__state[id] = (typeof raw === 'string') ? JSON.parse(raw) : raw; }catch(e){}
       });
       window.__saveLocal(window.__state);
-      stat('ok','RTDB 연결됨 · 실시간 동기화');
+      stat('ok','실시간 동기화 중');
       window.__render && window.__render(true);
-    }, err=>{ stat('local','RTDB 읽기 거부 — 로컬 저장으로 동작 (' + (err.code||'') + ')'); });
+    }, err=>{ stat('local','읽기 거부 — 로컬 저장으로 동작 (' + (err.code||'') + ')'); });
   });
 }catch(e){ stat('err','Firebase 초기화 실패 — 로컬 저장으로 동작'); }
 </script>
@@ -857,33 +936,33 @@ const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 $('#dchips').innerHTML = [
   ['오늘', fmt(TODAY_ISO), '', ''],
   ['앱내공지 게시', fmt(META.notice), 'D-'+days(TODAY,NOTICE), 'hot'],
-  ['론칭', fmt(META.launch), 'D-'+days(TODAY,LAUNCH), 'hot'],
+  ['론칭', fmt(META.launch), 'D-'+days(TODAY,LAUNCH), 'hot launch'],
   ['Feature Freeze', fmt('2026-08-19'), 'D-'+days(TODAY,D('2026-08-19')), ''],
   ['코드 프리즈·RC', fmt('2026-08-26'), 'D-'+days(TODAY,D('2026-08-26')), ''],
   ['Play 심사 제출', fmt('2026-08-31'), 'D-'+days(TODAY,D('2026-08-31')), ''],
   ['App Store 제출', fmt('2026-09-01'), 'D-'+days(TODAY,D('2026-09-01')), '']
-].map(([a,b,c,k])=>`<div class="dchip ${k}"><span>${a}</span><b>${b}</b>${c?`<span style="opacity:.7">${c}</span>`:''}</div>`).join('');
+].map(([a,b,c,k])=>`<div class="dchip ${k}"><span>${a}</span><b>${b}</b>${c?`<span class="dd">${c}</span>`:'<span class="dd">&nbsp;</span>'}</div>`).join('');
 $('#cnt').textContent = ITEMS.length;
-$('#ftr').innerHTML = META.title + ' · ' + META.ver + ' · 상태 저장 Firebase RTDB <code>projects/captain-mobile/edits/L0909__*</code>';
+$('#ftr').innerHTML = META.title + ' · ' + META.ver + ' · 상태 저장 <code>projects/captain-mobile/edits/L0909__*</code>';
 
 /* ── deps / decisions / risks / sources ── */
-$('#dep').innerHTML = DEPS.map(x=>`<tr><td style="min-width:130px"><b>${x.t}</b></td><td style="min-width:150px">${x.d}</td><td>${x.e}</td><td style="white-space:nowrap;color:var(--blue);font-weight:600;font-size:11.5px">${x.l}</td></tr>`).join('');
-$('#dec').innerHTML = DECISIONS.map(x=>`<tr><td style="font-weight:900;color:var(--blue)">${x.id}</td><td style="min-width:130px"><b>${x.t}</b></td><td style="min-width:150px;font-size:12px">${x.opt}</td><td>${x.impact}</td><td style="white-space:nowrap"><b>${fmt(x.by)}</b><br><span style="color:var(--desc);font-size:11.5px">${x.who}</span></td></tr>`).join('');
-$('#risk').innerHTML = RISKS.map(x=>`<div class="risk"><div class="rh"><span class="lv ${x.lv}">${x.lv}</span><span class="pid">${x.id}</span><span class="rt">${x.t}</span></div><div class="rd">${x.d}</div><div class="rm"><b>대응</b> · ${x.m}</div></div>`).join('');
+$('#dep').innerHTML = DEPS.map(x=>`<tr><td style="min-width:120px"><b>${x.t}</b></td><td style="min-width:150px">${x.d}</td><td>${x.e}</td><td class="lnk">${x.l}</td></tr>`).join('');
+$('#dec').innerHTML = DECISIONS.map(x=>`<tr><td class="did">${x.id}</td><td style="min-width:130px"><b>${x.t}</b></td><td style="min-width:150px;font-size:12px;color:var(--ink3)">${x.opt}</td><td>${x.impact}</td><td style="white-space:nowrap"><b>${fmt(x.by)}</b><br><span style="color:var(--ink3);font-size:11px">${x.who}</span></td></tr>`).join('');
+$('#risk').innerHTML = RISKS.map(x=>`<div class="risk"><div class="rh"><span class="lv ${x.lv}">${x.lv==='상'?'HIGH':(x.lv==='중'?'MED':'LOW')}</span><span class="pid">${x.id}</span><span class="rt">${x.t}</span></div><div class="rd">${x.d}</div><div class="rm"><b>대응</b>${x.m}</div></div>`).join('');
 $('#src').innerHTML = SOURCES.map(x=>`<tr><td style="min-width:200px"><b>${x.t}</b></td><td>${x.d}</td></tr>`).join('');
 
 /* ── timeline ── */
 (function(){
   const rows = TIMELINE.map(x=> Object.assign({}, x, {k: x.k==='today' ? '' : x.k}));
   if(!rows.some(x=>x.d===TODAY_ISO)){
-    rows.push({d:TODAY_ISO, k:'today', t:'오늘', s:'기한이 지난 항목은 준비항목 표에서 빨간색으로 표시됩니다'});
+    rows.push({d:TODAY_ISO, k:'today', t:'오늘', s:'기한이 지난 항목은 준비항목 목록에서 붉게 표시됩니다'});
   } else {
     rows.forEach(x=>{ if(x.d===TODAY_ISO) x.k='today'; });
   }
   rows.sort((a,b)=> a.d < b.d ? -1 : (a.d > b.d ? 1 : 0));
   $('#tl').innerHTML = rows.map(x=>{
     const dd = days(TODAY, D(x.d));
-    return `<div class="tli ${x.k}"><div class="tlc">
+    return `<div class="tli ${x.k}${dd<0?' past':''}"><div class="tlc">
       <div class="tld">${fmt(x.d)} <span class="dd">${dd===0?'오늘':(dd>0?'D-'+dd:'경과 '+(-dd)+'일')}</span></div>
       <div class="tlt">${x.t}</div><div class="tls">${x.s}</div></div></div>`;
   }).join('');
@@ -897,7 +976,7 @@ function chips(el, opts, key, cls){
   $(el).innerHTML = opts.map(o=>`<button class="tg ${F[key]===o.v?'on':''} ${cls&&o.v==='P0'?'p0':''}" data-k="${key}" data-v="${o.v}">${o.l}</button>`).join('');
 }
 function buildChips(){
-  chips('#fcat', [{v:'ALL',l:'전체'}].concat(CATS.map(c=>({v:c.id,l:c.id+'. '+c.name}))), 'cat');
+  chips('#fcat', [{v:'ALL',l:'전체'}].concat(CATS.map(c=>({v:c.id,l:c.name}))), 'cat');
   chips('#fpri', [{v:'ALL',l:'우선순위'},{v:'P0',l:'P0'},{v:'P1',l:'P1'},{v:'P2',l:'P2'}], 'pri', true);
   chips('#fsta', [{v:'ALL',l:'상태'},{v:'todo',l:'미착수'},{v:'doing',l:'진행중'},{v:'done',l:'완료'}], 'sta');
 }
@@ -928,12 +1007,16 @@ function kpi(){
     if(s.s!=='done' && days(TODAY,D(i.due))<0) over++;
   });
   const pct = Math.round(cnt.done/all*100);
+  const p0pct = Math.round(p0done/p0*100);
   $('#kpis').innerHTML = [
-    ['전체 준비항목', all+'<small> 건</small>', `<div class="bar"><i style="width:${pct}%"></i></div><div style="font-size:11px;color:var(--desc);margin-top:4px">완료 ${cnt.done} · 진행 ${cnt.doing} · 미착수 ${cnt.todo}${cnt.hold?' · 보류 '+cnt.hold:''}</div>`],
-    ['진행률', pct+'<small>%</small>', `<div style="font-size:11px;color:var(--desc);margin-top:8px">${cnt.done} / ${all}</div>`],
-    ['P0 (블로커)', p0done+'<small> / '+p0+'</small>', `<div class="bar"><i style="width:${Math.round(p0done/p0*100)}%;background:${p0done===p0?'var(--green)':'var(--red)'}"></i></div><div style="font-size:11px;color:var(--desc);margin-top:4px">미완 ${p0-p0done}건</div>`],
-    ['기한 경과 (미완)', over+'<small> 건</small>', `<div style="font-size:11px;color:${over?'var(--red)':'var(--desc)'};margin-top:8px;font-weight:${over?700:400}">${over?'즉시 확인 필요':'없음'}</div>`]
-  ].map(([l,v,x])=>`<div class="card kpi"><div class="lab">${l}</div><div class="val">${v}</div>${x}</div>`).join('');
+    ['전체 준비항목', all+'<small> 건</small>', '',
+      `<div class="bar"><i style="width:${pct}%"></i></div><div class="note">완료 ${cnt.done} · 진행 ${cnt.doing} · 미착수 ${cnt.todo}${cnt.hold?' · 보류 '+cnt.hold:''}</div>`],
+    ['진행률', pct+'<small>%</small>', '', `<div class="note" style="margin-top:20px">${cnt.done} / ${all}</div>`],
+    ['P0 블로커', p0done+'<small> / '+p0+'</small>', '',
+      `<div class="bar"><i class="${p0done===p0?'':'hot'}" style="width:${p0pct}%"></i></div><div class="note">미완 ${p0-p0done}건</div>`],
+    ['기한 경과', over+'<small> 건</small>', over?'hot':'',
+      `<div class="note${over?' hot':''}" style="margin-top:20px">${over?'즉시 확인 필요':'없음'}</div>`]
+  ].map(([l,v,k,x])=>`<div class="kpi"><div class="lab">${l}</div><div class="val ${k}">${v}</div>${x}</div>`).join('');
 }
 
 /* ── list ── */
@@ -951,11 +1034,11 @@ function render(keepOpen){
     const rows = shown.filter(i=>i.c===c.id);
     if(!rows.length) return '';
     const doneN = rows.filter(i=>st(i.id).s==='done').length;
-    return `<div class="cat"><div class="cathead"><span class="catdot" style="background:${c.color}"></span>
-      <h3>${c.id}. ${c.name}</h3><span class="cd">${c.desc}</span><span class="cn">${doneN}/${rows.length}</span></div>
+    return `<div class="cat"><div class="cathead"><span class="catmark">${c.id}</span>
+      <h3>${c.name}</h3><span class="cd">${c.desc}</span><span class="cn">${doneN} / ${rows.length}</span></div>
       ${rows.map(i=>itemHTML(i, open.has(i.id))).join('')}</div>`;
   }).join('');
-  $('#list').innerHTML = out || '<div class="card" style="padding:26px;text-align:center;color:var(--desc)">조건에 맞는 항목이 없습니다.</div>';
+  $('#list').innerHTML = out || '<div style="padding:40px 0;text-align:center;color:var(--ink3);font-size:12.5px">조건에 맞는 항목이 없습니다.</div>';
   kpi();
 }
 window.__render = render;
@@ -963,7 +1046,7 @@ window.__render = render;
 function itemHTML(i, isOpen){
   const s = st(i.id);
   const dd = days(TODAY, D(i.due));
-  const dcls = s.s==='done' ? '' : (dd<0 ? 'soon' : (dd<=3 ? 'soon' : (dd<=7 ? 'near' : '')));
+  const dcls = s.s==='done' ? '' : (dd<0 ? 'soon' : (dd<=2 ? 'near' : ''));
   const dtxt = s.s==='done' ? fmt(i.due) : fmt(i.due) + (dd<0 ? ' · 경과 '+(-dd)+'일' : ' · D-'+dd);
   const ck = s.s==='done'?'on':(s.s==='doing'?'doing':(s.s==='hold'?'hold':''));
   return `<div class="item ${s.s==='done'?'done':''} ${isOpen?'open':''}" data-id="${i.id}">
