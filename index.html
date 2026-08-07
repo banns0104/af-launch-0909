@@ -341,7 +341,7 @@ const META = {
   notice: '2026-08-10',
   launch: '2026-09-09',
   title: '어바웃피싱 8월 통합 서비스 — 9/9 론칭 전환 준비서',
-  ver: 'v1.0 · 2026-08-03 작성'
+  ver: 'v1.1 · 2026-08-03 작성 · 기준일 자동 계산'
 };
 
 const CATS = [
@@ -683,7 +683,7 @@ const RISKS = [
 ];
 
 const TIMELINE = [
- {d:'2026-08-03', w:'월', k:'today', t:'오늘 · 준비 착수', s:'마케팅시트 8월분 교체(G-02)'},
+ {d:'2026-08-03', w:'월', k:'',      t:'준비 착수 · 문서 v1 작성', s:'마케팅시트 8월분 교체(G-02)'},
  {d:'2026-08-05', w:'수', k:'gate',  t:'릴리즈 형태 확정 (D5)', s:'원링크 pid·c 부착(C-01) · GA 기준일 갱신(G-01)'},
  {d:'2026-08-07', w:'금', k:'gate',  t:'★ 약관 시행일 결정 (D1) · CPO 성명 확정 (D4)', s:'공지 개정 확정안 · 원링크 인벤토리'},
  {d:'2026-08-08', w:'토', k:'',      t:'재공고 실행 (시행일 이동 시)', s:'30일 역산 안전판 — 8/10보다 앞당김'},
@@ -843,15 +843,19 @@ const DEPS = [
 /* ── util ── */
 const $ = s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const D=(s)=>{const p=s.split('-');return new Date(+p[0], +p[1]-1, +p[2]);};
-const TODAY=D(META.today), LAUNCH=D(META.launch), NOTICE=D(META.notice);
+/* 기준일 = 문서를 여는 실제 날짜. 작성일(META.today)보다 이전이면 작성일로 고정. */
+const TODAY=(function(){ const n=new Date(); n.setHours(0,0,0,0); const b=D(META.today); return n>b?n:b; })();
+const LAUNCH=D(META.launch), NOTICE=D(META.notice);
 const days=(a,b)=>Math.round((b-a)/86400000);
 const WD=['일','월','화','수','목','금','토'];
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const TODAY_ISO=iso(TODAY);
 const fmt=s=>{const d=D(s);return (d.getMonth()+1)+'/'+d.getDate()+'('+WD[d.getDay()]+')';};
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 
 /* ── header chips ── */
 $('#dchips').innerHTML = [
-  ['오늘', fmt(META.today), '', ''],
+  ['오늘', fmt(TODAY_ISO), '', ''],
   ['앱내공지 게시', fmt(META.notice), 'D-'+days(TODAY,NOTICE), 'hot'],
   ['론칭', fmt(META.launch), 'D-'+days(TODAY,LAUNCH), 'hot'],
   ['Feature Freeze', fmt('2026-08-19'), 'D-'+days(TODAY,D('2026-08-19')), ''],
@@ -869,12 +873,21 @@ $('#risk').innerHTML = RISKS.map(x=>`<div class="risk"><div class="rh"><span cla
 $('#src').innerHTML = SOURCES.map(x=>`<tr><td style="min-width:200px"><b>${x.t}</b></td><td>${x.d}</td></tr>`).join('');
 
 /* ── timeline ── */
-$('#tl').innerHTML = TIMELINE.map(x=>{
-  const dd = days(TODAY, D(x.d));
-  return `<div class="tli ${x.k}"><div class="tlc">
-    <div class="tld">${fmt(x.d)} <span class="dd">${dd===0?'오늘':(dd>0?'D-'+dd:'D+'+(-dd))}</span></div>
-    <div class="tlt">${x.t}</div><div class="tls">${x.s}</div></div></div>`;
-}).join('');
+(function(){
+  const rows = TIMELINE.map(x=> Object.assign({}, x, {k: x.k==='today' ? '' : x.k}));
+  if(!rows.some(x=>x.d===TODAY_ISO)){
+    rows.push({d:TODAY_ISO, k:'today', t:'오늘', s:'기한이 지난 항목은 준비항목 표에서 빨간색으로 표시됩니다'});
+  } else {
+    rows.forEach(x=>{ if(x.d===TODAY_ISO) x.k='today'; });
+  }
+  rows.sort((a,b)=> a.d < b.d ? -1 : (a.d > b.d ? 1 : 0));
+  $('#tl').innerHTML = rows.map(x=>{
+    const dd = days(TODAY, D(x.d));
+    return `<div class="tli ${x.k}"><div class="tlc">
+      <div class="tld">${fmt(x.d)} <span class="dd">${dd===0?'오늘':(dd>0?'D-'+dd:'경과 '+(-dd)+'일')}</span></div>
+      <div class="tlt">${x.t}</div><div class="tls">${x.s}</div></div></div>`;
+  }).join('');
+})();
 
 /* ── filters ── */
 let F = {cat:'ALL', pri:'ALL', sta:'ALL', q:''};
